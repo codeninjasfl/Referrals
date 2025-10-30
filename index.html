@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2563eb" />
+  <title>Code Ninjas – Referral Caption Generator</title>
+  <meta name="description" content="Existing families: generate a polished, social‑media‑ready caption about your child and their Code Ninjas program. Includes quick Copy and Facebook Share." />
+  <style>
+    :root{ --bg1:#0ea5e9; --bg2:#2563eb; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --brand:#2563eb; --accent:#22d3ee; --border:#e5e7eb; --radius:16px; --shadow:0 12px 30px rgba(2,6,23,.18), 0 2px 8px rgba(2,6,23,.08); }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg1),var(--bg2));font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;color:var(--ink)}
+    .wrap{min-height:100%;display:grid;place-items:start center;padding:20px}
+
+    header{color:#eef6ff;text-align:center;margin-bottom:12px}
+    header .brand{display:flex;align-items:center;justify-content:center;gap:10px}
+    header img.logo{height:36px;width:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.15))}
+    header h1{margin:6px 0 0;font-size:clamp(22px,4vw,34px)}
+    header p{margin:6px 0 0;color:#dbeafe}
+
+    .card{width:min(860px,96vw);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+
+    .hint{color:var(--muted);font-size:12px;margin:0 0 10px}
+
+    label{font-weight:700;display:block;margin:0 0 6px}
+    input,select,textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;font-size:16px}
+    textarea{min-height:180px;resize:vertical}
+
+    .badge{display:inline-block;background:#eef2ff;color:#334155;font-weight:800;border-radius:999px;padding:6px 10px;margin:6px 0}
+
+    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+    .btn{appearance:none;border:1px solid var(--border);background:#f8fafc;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:900;min-height:48px}
+    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn:focus-visible{outline:3px solid color-mix(in oklab,var(--brand) 65%, white)}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+
+    .hidden{display:none !important}
+
+    .fade{animation:fade .25s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.fade{animation:none}}
+
+    .toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease}
+    .toast.show{opacity:1}
+
+    /* Wizard */
+    .wizard-head{display:flex;align-items:center;gap:12px;margin:8px 0 12px}
+    .progress{position:relative;height:8px;background:#eef2ff;border-radius:999px;overflow:hidden;flex:1}
+    .progress .bar{position:absolute;inset:0 100% 0 0;background:linear-gradient(90deg,var(--accent),var(--brand));transition:inset .25s ease}
+    .step{display:none}
+    .step.active{display:block}
+    .step h3{margin:0 0 8px}
+
+    /* Facebook button style */
+    .btn.fb{background:#1877F2;border-color:#1877F2;color:#fff}
+    .btn.fb .icon{vertical-align:-2px;margin-right:6px}
+
+    /* Multi-select chips */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+    .chip{border:1px solid var(--border);background:#f8fafc;border-radius:999px;padding:8px 12px;font-weight:700;cursor:pointer}
+    .chip[aria-pressed="true"]{background:color-mix(in oklab,var(--brand) 14%, white);border-color:var(--brand)}
+
+    @media (max-width:640px){ .wrap{padding:14px} .card{padding:14px} header img.logo{height:30px} .actions .btn.primary{flex:1 0 100%} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img class="logo" src="https://www.codeninjas.com/hubfs/Group%201.svg" alt="Code Ninjas logo" onerror="this.style.display='none'">
+      </div>
+      <h1>Code Ninjas – Referral Caption Generator</h1>
+      <p class="sub">Build a social‑media‑ready post about your child’s Code Ninjas experience. For every family you get to sign up, you get <strong>50% off</strong> the next month (save up to $200).</p>
+    </header>
+
+    <section class="card fade" id="builder" aria-live="polite">
+      <div class="badge">Step‑by‑step social media caption</div>
+
+      <div class="wizard-head">
+        <small id="stepLabel" class="hint">Step 1 of 7</small>
+        <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+      </div>
+
+      <!-- Step 1: Location -->
+      <div class="step active" data-step="0">
+        <h3>Your dojo location</h3>
+        <select id="location" required>
+          <option value="" disabled selected>Select a location…</option>
+          <option>Cooper City</option>
+          <option>Weston</option>
+          <option>Aventura</option>
+        </select>
+        <p class="hint">We’ll tailor the booking link to your dojo.</p>
+      </div>
+
+      <!-- Step 2: First name -->
+      <div class="step" data-step="1">
+        <h3>Child’s first name</h3>
+        <input id="child" placeholder="e.g., Alex" autocomplete="off" autocapitalize="words" required />
+        <p class="hint">We’ll never post anything automatically — you’re in control.</p>
+      </div>
+
+      <!-- Step 3: Gender -->
+      <div class="step" data-step="2">
+        <h3>Your child’s gender</h3>
+        <select id="gender" required>
+          <option value="" disabled selected>Select one…</option>
+          <option value="boy">Boy</option>
+          <option value="girl">Girl</option>
+          <option value="other">Other / Prefer not to say</option>
+        </select>
+        <p class="hint">We’ll adjust pronouns and phrasing automatically for a natural, grammatically correct caption.</p>
+      </div>
+
+      <!-- Step 4: Program -->
+      <div class="step" data-step="3">
+        <h3>Program they attend</h3>
+        <select id="program" required>
+          <option value="" disabled selected>Select a program…</option>
+          <option value="JR">JR (Ages 5–7)</option>
+          <option value="CREATE">CREATE (8+)</option>
+          <option value="Robotics Academy">Robotics Academy</option>
+          <option value="AI Academy">AI Academy</option>
+          <option value="Clubs">Clubs</option>
+        </select>
+        <p class="hint">We’ll tailor details and highlights to this program.</p>
+      </div>
+
+      <!-- Step 5: Parent likes -->
+      <div class="step" data-step="4">
+        <h3>As a parent, what do you like about Code Ninjas? <small class="hint">(choose all that apply)</small></h3>
+        <div id="likesChips" class="chips" role="group" aria-label="What you like"></div>
+      </div>
+
+      <!-- Step 6: Cool program bits -->
+      <div class="step" data-step="5">
+        <h3>What’s something cool about the program? <small class="hint">(choose all that apply)</small></h3>
+        <div id="coolChips" class="chips" role="group" aria-label="Cool program highlights"></div>
+      </div>
+
+      <!-- Step 7: Caption only -->
+      <div class="step" data-step="6">
+        <h3>Share‑ready social caption</h3>
+        <textarea id="caption" readonly></textarea>
+        <div class="actions">
+          <button id="shuffle" class="btn" type="button">Shuffle ✦</button>
+          <button id="copy" class="btn" type="button" disabled>Copy text</button>
+          <button id="postFb" class="btn fb" type="button" disabled>
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.49 17.52 2 11.93 2S2 6.49 2 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.04H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34v7.04C18.34 21.25 22 17.09 22 12.07Z"/></svg>
+            Share on Facebook
+          </button>
+        </div>
+      </div>
+
+      <div class="actions" id="navActions">
+        <button id="back" class="btn" type="button" disabled>◀ Back</button>
+        <button id="next" class="btn primary" type="button">Next ▶</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function(){
+      'use strict';
+      const byId = (id) => document.getElementById(id);
+
+      const els = {
+        stepLabel: byId('stepLabel'),
+        progressBar: byId('progressBar'),
+        steps: Array.from(document.querySelectorAll('.step')),
+        navActions: byId('navActions'),
+        back: byId('back'),
+        next: byId('next'),
+        caption: byId('caption'),
+        copy: byId('copy'),
+        postFb: byId('postFb'),
+        toast: byId('toast'),
+        gender: byId('gender'),
+        location: byId('location'),
+        child: byId('child'),
+        program: byId('program'),
+        likesChips: byId('likesChips'),
+        coolChips: byId('coolChips'),
+        shuffle: byId('shuffle')
+      };
+
+      const state = { step: 0, total: 7 };
+      let genTimer = null;
+
+      function showToast(msg){ els.toast.textContent = msg; els.toast.classList.add('show'); setTimeout(() => els.toast.classList.remove('show'), 1800); }
+      function capName(s){ const t = String(s || '').trim(); if(!t) return ''; return t.split(' ').map((w) => w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : '').join(' '); }
+
+      // Bookings by location
+      const booking = {
+        'Cooper City':'https://www.codeninjas.com/fl-cooper-city/schedule-tour',
+        'Weston':'https://www.codeninjas.com/fl-weston/schedule-tour',
+        'Aventura':'https://www.codeninjas.com/fl-aventura/schedule-tour'
+      };
+
+      // Pronouns/nouns by gender
+      function pronouns(g){
+        if(g === 'boy') return { subj:'he', obj:'him', poss:'his', possCap:'His', noun:'son' };
+        if(g === 'girl') return { subj:'she', obj:'her', poss:'her', possCap:'Her', noun:'daughter' };
+        return { subj:'they', obj:'them', poss:'their', possCap:'Their', noun:'child' };
+      }
+      function beVerb(g){ return g === 'other' ? 'are' : 'is'; }
+
+      // Program content
+      const programSnippets = {
+        JR: {
+          verbs: ['building confidence','learning sequencing','tackling logic puzzles','exploring early STEM','asking great problem‑solving questions'],
+          specifics: ['visual lessons','hands‑on projects','play‑based learning','engaging mini‑challenges']
+        },
+        CREATE: {
+          verbs: ['coding games','leveling up through belts','debugging like a champ','thinking like a developer','testing and improving ideas'],
+          specifics: ['MakeCode to JavaScript','game design and testing','mentor‑guided projects','real debugging practice']
+        },
+        'Robotics Academy': {
+          verbs: ['building and programming robots','mixing hardware with code','solving real‑world challenges','iterating like an engineer'],
+          specifics: ['sensors and motors','engineering design','team problem‑solving','try‑and‑improve cycles']
+        },
+        'AI Academy': {
+          verbs: ['experimenting with AI','learning how models work','using technology responsibly','thinking critically about outputs'],
+          specifics: ['ethical AI basics','hands‑on projects','data and logic thinking','age‑appropriate concepts']
+        },
+        Clubs: {
+          verbs: ['creating with friends','showing off new ideas','stretching creativity','trying something new each week'],
+          specifics: ['weekly themes','collab builds','low‑pressure fun','mentor‑led showcases']
+        }
+      };
+
+      // Likes (clean phrasing)
+      const likeOptions = [
+        'friendly, helpful mentors',
+        'clear, belt‑based progress',
+        'flexible scheduling',
+        'welcoming community',
+        'safe, clean dojo',
+        'sessions are genuinely fun',
+        'real‑world skills they can use',
+        'clear progress and feedback',
+        'kids make friends quickly'
+      ];
+
+      // Program cool bits (per program)
+      const coolByProgram = {
+        JR: ['block‑based puzzles','sticker milestones','hands‑on builds','patient mentors'],
+        CREATE: ['belts and gamified goals','designing and testing games','JavaScript progression','project gallery'],
+        'Robotics Academy': ['building bots from scratch','sensor challenges','friendly competitions','creative robot designs'],
+        'AI Academy': ['training mini models','smart prompt crafting','talking about AI ethics','seeing ideas come to life'],
+        Clubs: ['weekly themes','collab projects','show‑and‑tell','community vibes']
+      };
+
+      function makeChip(label, group){
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = label;
+        b.setAttribute('aria-pressed','false');
+        b.addEventListener('click',function(){ const on=b.getAttribute('aria-pressed')==='true'; b.setAttribute('aria-pressed', on?'false':'true'); if(state.step===state.total-1) generate(); });
+        group.appendChild(b);
+      }
+
+      function renderLikeChips(){ els.likesChips.innerHTML=''; likeOptions.forEach(function(l){ makeChip(l, els.likesChips); }); }
+      function renderCoolChips(){ const p = els.program.value || 'CREATE'; const list = (coolByProgram[p]||[]); els.coolChips.innerHTML=''; list.forEach(function(l){ makeChip(l, els.coolChips); }); }
+      function getSelectedFrom(group){ return Array.from(group.querySelectorAll('.chip[aria-pressed="true"]')).map(function(b){ return b.textContent.trim(); }); }
+
+      // Sentence pieces — high variance and gender‑aware
+      const openers = [
+        'Proud parent alert: {name} {be} thriving in {program} at Code Ninjas {dojo}. ',
+        '{name} absolutely loves {program} at Code Ninjas {dojo}. ',
+        'Shoutout to Code Ninjas {dojo} — {name} looks forward to every {program} session. ',
+        'Every visit to Code Ninjas {dojo} has {name} buzzing — {program} just clicks. ',
+        'We are so impressed with {name}’s growth in {program} at Code Ninjas {dojo}. ',
+        '{subjectCap} has really found {poss} thing in {program} at Code Ninjas {dojo}. ',
+        'The confidence {name} brings home from {program} at Code Ninjas {dojo} is next‑level. ',
+        'Nothing beats watching {name} light up during {program} at Code Ninjas {dojo}. '
+      ];
+
+      const middles = [
+        '{subjCap} {be} {verb} with {specific}. {possCap} projects make {obj} proud. ',
+        'It’s been awesome to see {name} {verb}, especially with {specific}. ',
+        'Week after week, {subj} {be} {verb} thanks to {specific} and great mentors. ',
+        'Between {specific} and patient mentors, {name} {be} really growing. ',
+        'Watching {name} dive into {specific} has been the highlight of our week. ',
+        '{subjCap} talks about {poss} builds nonstop — we love it. '
+      ];
+
+      const parentLines = [
+        'As a parent, I really appreciate {likes}. ',
+        'From our side, {likes}. ',
+        'What we love most is {likes}. ',
+        'Parent take: {likes}. '
+      ];
+
+      const coolLines = [
+        'The coolest parts have been {cools}. ',
+        'We especially love {cools}. ',
+        'Top highlights: {cools}. ',
+        'Favorite moments so far: {cools}. '
+      ];
+
+      // Booking call-to-action variants (8 options)
+      const calloutLines = [
+        'Book a free gamebuilding session with your child today!',
+        'Schedule a free gamebuilding visit — your child will love it!',
+        'Grab a free gamebuilding session and come see the dojo!',
+        'Try a free gamebuilding session and see what it’s all about!',
+        'Book a free session and let them build their first game!',
+        'Set up a free gamebuilding session — quick and easy!',
+        'Claim a free gamebuilding session at your dojo!',
+        'Book a free gamebuilding session. See you soon!'
+      ];
+
+      function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+      function oxfordJoin(items){ const a=items.filter(Boolean); if(a.length<=1) return a.join(''); if(a.length===2) return a.join(' and '); return a.slice(0,-1).join(', ')+', and '+a[a.length-1]; }
+
+      function buildCaption({gender, name, program, dojo, likes, cools}){
+        const p = programSnippets[program] || programSnippets.CREATE;
+        const pr = pronouns(gender);
+        const be = beVerb(gender);
+
+        const ctx = {
+          name: capName(name),
+          program: program,
+          dojo: dojo,
+          be: be,
+          subj: pr.subj,
+          subjCap: pr.subj.charAt(0).toUpperCase()+pr.subj.slice(1),
+          obj: pr.obj,
+          poss: pr.poss,
+          possCap: pr.possCap,
+          subjectCap: `My ${pr.noun}`,
+          verb: pick(p.verbs),
+          specific: pick(p.specifics)
+        };
+
+        const opener = pick(openers)
+          .replaceAll('{name}', ctx.name)
+          .replaceAll('{program}', ctx.program)
+          .replaceAll('{dojo}', ctx.dojo)
+          .replaceAll('{subjectCap}', ctx.subjectCap)
+          .replaceAll('{poss}', ctx.poss)
+          .replaceAll('{be}', ctx.be);
+
+        const middle = pick(middles)
+          .replaceAll('{name}', ctx.name)
+          .replaceAll('{subj}', ctx.subj)
+          .replaceAll('{subjCap}', ctx.subjCap)
+          .replaceAll('{obj}', ctx.obj)
+          .replaceAll('{poss}', ctx.poss)
+          .replaceAll('{possCap}', ctx.possCap)
+          .replaceAll('{be}', ctx.be)
+          .replaceAll('{verb}', ctx.verb)
+          .replaceAll('{specific}', ctx.specific);
+
+        let likeLine = '';
+        if(likes.length){ likeLine = pick(parentLines).replace('{likes}', oxfordJoin(likes)); }
+        let coolLine = '';
+        if(cools.length){ coolLine = pick(coolLines).replace('{cools}', oxfordJoin(cools)); }
+
+        const callout = pick(calloutLines);
+        const link = booking[dojo] ? booking[dojo] : 'https://www.codeninjas.com/';
+
+        return (
+          opener + middle + likeLine + coolLine + '\n\n' + callout + '\n' + link
+        ).trim();
+      }
+
+      function setStep(i){
+        const total = state.total;
+        if(i < 0) i = 0;
+        if(i > total - 1) i = total - 1;
+        state.step = i;
+        els.steps.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+        els.stepLabel.textContent = `Step ${i+1} of ${total}`;
+        const pct = (i/(total-1))*100;
+        els.progressBar.style.insetInlineEnd = `${100 - pct}%`;
+        // Manage nav per step
+        els.back.disabled = (i === 0);
+        els.back.textContent = (i === total - 1) ? '↺ Restart' : '◀ Back';
+        if(i === total - 1){
+          els.next.classList.add('hidden');
+          els.copy.disabled = true;
+          els.postFb.disabled = true;
+          generate();
+        } else {
+          els.next.classList.remove('hidden');
+          els.copy.disabled = true;
+          els.postFb.disabled = true;
+        }
+      }
+
+      function validateStep(i){
+        if(i === 0) return !!els.location.value;
+        if(i === 1) return !!els.child.value.trim();
+        if(i === 2) return !!els.gender.value;
+        if(i === 3) return !!els.program.value;
+        return true;
+      }
+
+      function resetForm(){
+        // Cancel any pending caption generation
+        if(genTimer){ clearTimeout(genTimer); genTimer = null; }
+        // Clear inputs
+        els.location.value = '';
+        els.child.value = '';
+        els.gender.value = '';
+        els.program.value = '';
+        // Reset chips
+        renderLikeChips();
+        els.coolChips.innerHTML = '';
+        // Clear caption/output and disable share actions
+        els.caption.value = '';
+        els.copy.disabled = true;
+        els.postFb.disabled = true;
+      }
+
+      function next(){
+        if(!validateStep(state.step)){ showToast('Please complete this step.'); return; }
+        setStep(Math.min(state.step + 1, state.total - 1));
+      }
+
+      function back(){
+        if(state.step === state.total - 1){
+          // Restart: fully clear state and go to step 1
+          resetForm();
+          setStep(0);
+          return;
+        }
+        if(state.step > 0) setStep(state.step - 1);
+      }
+        if(state.step > 0) setStep(state.step - 1);
+      }
+
+      function generate(){
+        // Build inputs first to ensure consistency during delay
+        const likes = getSelectedFrom(els.likesChips);
+        const cools = getSelectedFrom(els.coolChips);
+        const params = {
+          gender: els.gender.value,
+          name: els.child.value,
+          program: els.program.value,
+          dojo: els.location.value,
+          likes: likes,
+          cools: cools
+        };
+        // UI: show loading + disable actions
+        els.caption.value = 'Generating caption…';
+        els.copy.disabled = true;
+        els.postFb.disabled = true;
+        // Clear any in‑flight timers
+        if(genTimer){ clearTimeout(genTimer); }
+        const delay = 200 + Math.floor(Math.random() * 401); // 200–600ms
+        genTimer = setTimeout(function(){
+          const text = buildCaption(params);
+          els.caption.value = text;
+          els.copy.disabled = false;
+          els.postFb.disabled = false;
+        }, delay);
+      }
+
+      async function copyText(){
+        const t = els.caption.value.trim();
+        if(!t) return;
+        try { await navigator.clipboard.writeText(t); showToast('Copied to clipboard'); }
+        catch(e){ els.caption.select(); document.execCommand('copy'); showToast('Copied'); }
+      }
+      function shareFacebook(){
+        const t = els.caption.value.trim();
+        if(!t) return;
+        const bookingLink = booking[els.location.value] || 'https://www.codeninjas.com/';
+        const href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(bookingLink)}&quote=${encodeURIComponent(t)}`;
+        window.open(href,'_blank','noopener,noreferrer,width=780,height=540');
+      }
+
+      // Keyboard: Enter to go Next (not inside caption)
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Enter'){
+          const ae = document.activeElement;
+          const tag = ae && ae.tagName;
+          if(tag === 'TEXTAREA') return; // allow line breaks in caption
+          if(e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
+          e.preventDefault();
+          next();
+        }
+      });
+
+      // Events
+      els.back.addEventListener('click', back);
+      els.next.addEventListener('click', next);
+      els.shuffle.addEventListener('click', generate);
+      els.copy.addEventListener('click', copyText);
+      els.postFb.addEventListener('click', shareFacebook);
+      els.location.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
+      els.child.addEventListener('input', function(){ if(state.step===state.total-1) generate(); });
+      els.gender.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
+      els.program.addEventListener('change', function(){ renderCoolChips(); if(state.step===state.total-1) generate(); });
+
+      // Init chips + first step
+      renderLikeChips();
+      renderCoolChips();
+      setStep(0);
+    })();
+  </script>
+</body>
+</html>
