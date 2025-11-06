@@ -4,64 +4,67 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2563eb" />
-  <title>Code Ninjas – Referral Caption Generator</title>
-  <meta name="description" content="Existing families: generate a polished, social‑media‑ready caption about your child and their Code Ninjas program. Includes quick Copy and Facebook Share." />
+  <title>Code Ninjas - Share Your Story For $100 Off</title>
+  <meta name="description" content="Generate a social-ready post about your child’s Code Ninjas experience — and share a QR that links to your dojo’s signup page. Every referral equals $100 off your next month (stackable up to your dojo’s limit)." />
   <style>
-    :root{ --bg1:#0ea5e9; --bg2:#2563eb; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --brand:#2563eb; --accent:#22d3ee; --border:#e5e7eb; --radius:16px; --shadow:0 12px 30px rgba(2,6,23,.18), 0 2px 8px rgba(2,6,23,.08); }
-    *{box-sizing:border-box;}
-    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg1),var(--bg2));font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;color:var(--ink);}
-    .wrap{min-height:100%;display:grid;place-items:start center;padding:20px;}
-
-    header{color:#eef6ff;text-align:center;margin-bottom:12px;}
-    header .brand{display:flex;align-items:center;justify-content:center;gap:10px;}
-    header img.logo{height:36px;width:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.15));}
-    header h1{margin:6px 0 0;font-size:clamp(22px,4vw,34px);}
-    header p{margin:6px 0 0;color:#dbeafe;}
-
-    .card{width:min(860px,96vw);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;}
-
-    .hint{color:var(--muted);font-size:12px;margin:0 0 10px;}
-
-    label{font-weight:700;display:block;margin:0 0 6px;}
-    input,select,textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;font-size:16px;}
-    textarea{min-height:180px;resize:vertical;}
-
-    .badge{display:inline-block;background:#eef2ff;color:#334155;font-weight:800;border-radius:999px;padding:6px 10px;margin:6px 0;}
-
-    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap;}
-    .btn{appearance:none;border:1px solid var(--border);background:#f8fafc;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:900;min-height:48px;}
-    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;}
-    .btn:focus-visible{outline:3px solid color-mix(in oklab,var(--brand) 65%, white);}
-    .btn:disabled{opacity:.5;cursor:not-allowed;}
-
-    .hidden{display:none !important;}
-
-    .fade{animation:fade .25s ease;}
-    @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
-    @media (prefers-reduced-motion:reduce){.fade{animation:none;}}
-
-    .toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease;}
-    .toast.show{opacity:1;}
+    :root{ --bg1:#0ea5e9; --bg2:#2563eb; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --brand:#2563eb; --accent:#22d3ee; --border:#e5e7eb; --radius:18px; --shadow:0 14px 34px rgba(2,6,23,.18), 0 2px 10px rgba(2,6,23,.08); }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg1),var(--bg2));font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;color:var(--ink)}
+    .wrap{min-height:100%;display:grid;place-items:start center;padding:20px}
+    header{color:#eef6ff;text-align:center;margin-bottom:12px}
+    header .brand{display:flex;align-items:center;justify-content:center;gap:10px}
+    header img.logo{height:42px;width:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.15))}
+    header h1{margin:6px 0 0;font-size:clamp(22px,4vw,34px)}
+    header p{margin:6px 0 0;color:#dbeafe}
+    .card{width:min(920px,96vw);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .hint{color:var(--muted);font-size:12px;margin:0 0 10px}
+    label{font-weight:700;display:block;margin:0 0 6px}
+    input,select,textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;font-size:16px}
+    textarea{min-height:160px;resize:vertical;background:#f8fafc}
+    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+    .btn{appearance:none;border:1px solid var(--border);background:#f8fafc;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:800;min-height:48px}
+    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn.ghost{background:#fff}
+    .btn.icon{padding:12px;display:inline-flex;align-items:center;justify-content:center}
+    .btn.icon svg{width:18px;height:18px;display:block}
+    .btn:focus-visible{outline:3px solid color-mix(in oklab,var(--brand) 65%, white)}
+    .btn:disabled{opacity:.55;cursor:not-allowed}
+    .hidden{display:none !important}
+    .fade{animation:fade .25s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.fade{animation:none}}
+    .toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease}
+    .toast.show{opacity:1}
 
     /* Wizard */
-    .wizard-head{display:flex;align-items:center;gap:12px;margin:8px 0 12px;}
-    .progress{position:relative;height:8px;background:#eef2ff;border-radius:999px;overflow:hidden;flex:1;}
-    .progress .bar{position:absolute;inset:0 100% 0 0;background:linear-gradient(90deg,var(--accent),var(--brand));transition:inset .25s ease;}
-    .step{display:none;}
-    .step.active{display:block;}
-    .step h3{margin:0 0 8px;}
+    .wizard-head{display:flex;align-items:center;gap:12px;margin:8px 0 12px}
+    .progress{position:relative;height:8px;background:#eef2ff;border-radius:999px;overflow:hidden;flex:1}
+    .progress .bar{position:absolute;inset:0 100% 0 0;background:linear-gradient(90deg,var(--accent),var(--brand));transition:inset .25s ease}
+    .step{display:none}
+    .step.active{display:block}
 
-    /* Facebook button style */
-    .btn.fb{background:#1877F2;border-color:#1877F2;color:#fff;}
-    .btn.fb .icon{vertical-align:-2px;margin-right:6px;}
+    /* Parent-facing final layout */
+    .final{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .final .panel{border:1px solid var(--border);border-radius:14px;padding:16px}
+    .final h3{margin:0 0 8px}
+    .caption-area{display:flex;flex-direction:column;gap:10px}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+    .mini{font-size:12px;color:#64748b}
 
-    /* Multi-select chips */
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;}
-    .chip{border:1px solid var(--border);background:#f8fafc;border-radius:999px;padding:8px 12px;font-weight:700;cursor:pointer;}
-    .chip[aria-pressed="true"]{background:color-mix(in oklab,var(--brand) 14%, white);border-color:var(--brand);}
+    /* Likes chips */
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{appearance:none;border:1px solid var(--border);background:#fff;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}
+    .chip[aria-pressed="true"]{background:color-mix(in oklab,var(--brand) 18%, white);border-color:var(--brand)}
+    .chip:focus-visible{outline:3px solid color-mix(in oklab,var(--brand) 55%, white)}
 
-    @media (max-width:640px){ .wrap{padding:14px;} .card{padding:14px;} header img.logo{height:30px;} .actions .btn.primary{flex:1 0 100%;} }
+    /* QR section */
+    .qr-wrap{display:grid;gap:10px;justify-items:center}
+    .qr-card{border:1px dashed var(--border);border-radius:12px;padding:10px;background:#fff;box-shadow:var(--shadow)}
+    .qr-card canvas{display:block;width:min(320px,88vw);height:auto;border-radius:8px}
+    .qr-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+
+    @media (max-width:880px){.final{grid-template-columns:1fr}}
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -69,52 +72,47 @@
       <div class="brand">
         <img class="logo" src="https://www.codeninjas.com/hubfs/Group%201.svg" alt="Code Ninjas logo" onerror="this.style.display='none'">
       </div>
-      <h1>Code Ninjas – Referral Caption Generator</h1>
-      <p class="sub">Build a social‑media‑ready post about your child’s Code Ninjas experience. For every family you get to sign up, you get <strong>50% off</strong> the next month (save up to $200).</p>
+      <h1>Code Ninjas - Share Your Story For $100 Off</h1>
+      <p class="sub">Generate a quick post about your child’s Code Ninjas experience. Every friend who enrolls with your referral is <strong>$100 off</strong> your next month.</p>
     </header>
 
     <section class="card fade" id="builder" aria-live="polite">
-      <div class="badge">Step‑by‑step social media caption</div>
-
       <div class="wizard-head">
-        <small id="stepLabel" class="hint">Step 1 of 7</small>
+        <small id="stepLabel" class="hint">Step 1 of 6</small>
         <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
       </div>
 
       <!-- Step 1: Location -->
       <div class="step active" data-step="0">
-        <h3>Your dojo location</h3>
+        <label for="location">Your dojo location</label>
         <select id="location" required>
           <option value="" disabled selected>Select a location…</option>
           <option>Cooper City</option>
           <option>Weston</option>
           <option>Aventura</option>
         </select>
-        <p class="hint">We’ll tailor the booking link to your dojo.</p>
       </div>
 
       <!-- Step 2: First name -->
       <div class="step" data-step="1">
-        <h3>Child’s first name</h3>
+        <label for="child">Child’s first name</label>
         <input id="child" placeholder="e.g., Alex" autocomplete="off" autocapitalize="words" required />
-        <p class="hint">We’ll never post anything automatically — you’re in control.</p>
       </div>
 
       <!-- Step 3: Gender -->
       <div class="step" data-step="2">
-        <h3>Your child’s gender</h3>
+        <label for="gender">Your child’s gender</label>
         <select id="gender" required>
           <option value="" disabled selected>Select one…</option>
           <option value="boy">Boy</option>
           <option value="girl">Girl</option>
           <option value="other">Other / Prefer not to say</option>
         </select>
-        <p class="hint">We’ll adjust pronouns and phrasing automatically for a natural, grammatically correct caption.</p>
       </div>
 
       <!-- Step 4: Program -->
       <div class="step" data-step="3">
-        <h3>Program they attend</h3>
+        <label for="program">Program they attend</label>
         <select id="program" required>
           <option value="" disabled selected>Select a program…</option>
           <option value="JR">JR (Ages 5–7)</option>
@@ -123,32 +121,42 @@
           <option value="AI Academy">AI Academy</option>
           <option value="Clubs">Clubs</option>
         </select>
-        <p class="hint">We’ll tailor details and highlights to this program.</p>
       </div>
 
-      <!-- Step 5: Parent likes -->
+      <!-- Step 5: Likes (multi-select chips) -->
       <div class="step" data-step="4">
-        <h3>As a parent, what do you like about Code Ninjas? <small class="hint">(choose all that apply)</small></h3>
+        <label>As a parent, what do you like about Code Ninjas? <span class="mini">(choose all that apply)</span></label>
         <div id="likesChips" class="chips" role="group" aria-label="What you like"></div>
       </div>
 
-      <!-- Step 6: Cool program bits -->
+      <!-- Step 6: Final parent-facing screen -->
       <div class="step" data-step="5">
-        <h3>What’s something cool about the program? <small class="hint">(choose all that apply)</small></h3>
-        <div id="coolChips" class="chips" role="group" aria-label="Cool program highlights"></div>
-      </div>
+        <div class="final">
+          <div class="panel caption-area">
+            <h3>All set! Here’s your post</h3>
+            <textarea id="caption" readonly></textarea>
+            <div class="cta-row">
+              <button id="shuffle" class="btn ghost icon" type="button" title="Shuffle phrasing" aria-label="Shuffle phrasing">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="11" y2="13"></line><line x1="4" y1="4" x2="9" y2="9"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="12" x2="9" y2="12"></line></svg>
+              </button>
+              <button id="copy" class="btn" type="button" disabled>Copy caption</button>
+              <button id="postFb" class="btn primary" type="button" disabled>Share on Facebook</button>
+            </div>
+            <p class="mini">Tip: paste the caption into your favorite social app along with a photo of your child’s project.</p>
+          </div>
 
-      <!-- Step 7: Caption only -->
-      <div class="step" data-step="6">
-        <h3>Share‑ready social caption</h3>
-        <textarea id="caption" readonly></textarea>
-        <div class="actions">
-          <button id="shuffle" class="btn" type="button">Shuffle ✦</button>
-          <button id="copy" class="btn" type="button" disabled>Copy text</button>
-          <button id="postFb" class="btn fb" type="button" disabled>
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.49 17.52 2 11.93 2S2 6.49 2 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.04H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34v7.04C18.34 21.25 22 17.09 22 12.07Z"/></svg>
-            Share on Facebook
-          </button>
+          <div class="panel">
+            <h3>Share with a quick scan</h3>
+            <div class="qr-wrap">
+              <div class="qr-card">
+                <canvas id="qrCanvas" width="1024" height="1024" aria-label="QR linking to your dojo booking page"></canvas>
+              </div>
+              <div class="qr-actions">
+                <button id="downloadQR" class="btn" type="button" disabled>Download QR (PNG)</button>
+              </div>
+              <p id="qrStatus" class="mini" aria-live="polite">Scan to book a free gamebuilding session at your dojo.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -160,337 +168,259 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="qrHidden" class="hidden" aria-hidden="true"></div>
 
   <script>
-    (function(){
-      'use strict';
-      const byId = (id) => document.getElementById(id);
+  (function(){
+    'use strict';
+    // Helpers
+    function byId(id){ return document.getElementById(id); }
 
-      const els = {
-        stepLabel: byId('stepLabel'),
-        progressBar: byId('progressBar'),
-        steps: Array.from(document.querySelectorAll('.step')),
-        navActions: byId('navActions'),
-        back: byId('back'),
-        next: byId('next'),
-        caption: byId('caption'),
-        copy: byId('copy'),
-        postFb: byId('postFb'),
-        toast: byId('toast'),
-        gender: byId('gender'),
-        location: byId('location'),
-        child: byId('child'),
-        program: byId('program'),
-        likesChips: byId('likesChips'),
-        coolChips: byId('coolChips'),
-        shuffle: byId('shuffle')
-      };
+    var els = {
+      stepLabel: byId('stepLabel'), progressBar: byId('progressBar'),
+      steps: Array.prototype.slice.call(document.querySelectorAll('.step')),
+      back: byId('back'), next: byId('next'),
+      caption: byId('caption'), copy: byId('copy'), postFb: byId('postFb'),
+      gender: byId('gender'), location: byId('location'), child: byId('child'), program: byId('program'),
+      likesChips: byId('likesChips'), shuffle: byId('shuffle'),
+      // QR bits
+      qrCanvas: byId('qrCanvas'), qrHidden: byId('qrHidden'), downloadQR: byId('downloadQR'), qrStatus: byId('qrStatus'),
+      toast: byId('toast')
+    };
 
-      const state = { step: 0, total: 7 };
-      let genTimer = null;
+    var state = { step: 0, total: 6 };
+    var genTimer = null;
 
-      function showToast(msg){ els.toast.textContent = msg; els.toast.classList.add('show'); setTimeout(function(){ els.toast.classList.remove('show'); }, 1800); }
-      function capName(s){ const t = String(s || '').trim(); if(!t) return ''; return t.split(' ').map(function(w){ return w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : ''; }).join(' '); }
+    function showToast(msg){ els.toast.textContent = msg; els.toast.classList.add('show'); setTimeout(function(){ els.toast.classList.remove('show'); }, 1500); }
+    function capName(s){ var t = String(s||'').trim(); if(!t) return ''; return t.split(' ').map(function(w){ return w? w.charAt(0).toUpperCase()+w.slice(1).toLowerCase(): ''; }).join(' '); }
 
-      // Booking links by location
-      const booking = {
-        'Cooper City':'https://www.codeninjas.com/fl-cooper-city/schedule-tour',
-        'Weston':'https://www.codeninjas.com/fl-weston/schedule-tour',
-        'Aventura':'https://www.codeninjas.com/fl-aventura/schedule-tour'
-      };
+    // booking links
+    var booking = {
+      'Cooper City':'https://www.codeninjas.com/fl-cooper-city/schedule-tour',
+      'Weston':'https://www.codeninjas.com/fl-weston/schedule-tour',
+      'Aventura':'https://www.codeninjas.com/fl-aventura/schedule-tour'
+    };
 
-      // Pronouns/nouns by gender
-      function pronouns(g){
-        if(g === 'boy') return { subj:'he', obj:'him', poss:'his', possCap:'His', noun:'son' };
-        if(g === 'girl') return { subj:'she', obj:'her', poss:'her', possCap:'Her', noun:'daughter' };
-        return { subj:'they', obj:'them', poss:'their', possCap:'Their', noun:'child' };
+    // pronouns
+    function pronouns(g){ return g==='boy'?{subj:'he',obj:'him',poss:'his',possCap:'His',noun:'son'}: g==='girl'?{subj:'she',obj:'her',poss:'her',possCap:'Her',noun:'daughter'}:{subj:'they',obj:'them',poss:'their',possCap:'Their',noun:'child'}; }
+    function beVerb(g){ return g==='other'?'are':'is'; }
+
+    // likes chips
+    var likeOptions = ['friendly, helpful mentors','clear, belt‑based progress','flexible scheduling','welcoming community','safe, clean dojo','sessions are genuinely fun','real‑world skills they can use','clear progress and feedback','kids make friends quickly'];
+    function makeChip(label){ var b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=label; b.setAttribute('aria-pressed','false'); b.addEventListener('click',function(){ var on=b.getAttribute('aria-pressed')==='true'; b.setAttribute('aria-pressed', on?'false':'true'); if(state.step===state.total-1) generate();}); return b; }
+    function renderLikeChips(){ els.likesChips.innerHTML=''; likeOptions.forEach(function(l){ els.likesChips.appendChild(makeChip(l)); }); }
+    function getSelectedLikes(){ return Array.prototype.slice.call(els.likesChips.querySelectorAll('[aria-pressed="true"]')).map(function(b){ return b.textContent.trim(); }); }
+
+    // caption pieces
+    var programSnippets = {
+      JR:{ verbs:['building confidence','learning sequencing','tackling logic puzzles','exploring early STEM'], specifics:['visual lessons','hands‑on projects','play‑based learning'] },
+      CREATE:{ verbs:['coding games','leveling up through belts','debugging like a champ','thinking like a developer'], specifics:['MakeCode to JavaScript','game design and testing','mentor‑guided projects'] },
+      'Robotics Academy':{ verbs:['building and programming robots','mixing hardware with code','solving real‑world challenges'], specifics:['sensors and motors','engineering design','team problem‑solving'] },
+      'AI Academy':{ verbs:['experimenting with AI','learning how models work','using technology responsibly'], specifics:['ethical AI basics','hands‑on projects','logic and data thinking'] },
+      Clubs:{ verbs:['creating with friends','showing off new ideas','trying something new each week'], specifics:['weekly themes','collab builds','mentor‑led showcases'] }
+    };
+    var openers = [
+      'Proud parent alert: {name} {be} thriving in {program} at Code Ninjas {dojo}. ',
+      '{name} absolutely loves {program} at Code Ninjas {dojo}. ',
+      'Shoutout to Code Ninjas {dojo} — {name} looks forward to every {program} session. '
+    ];
+    var middles = [
+      '{subjCap} {be} {verb} with {specific}. {possCap} projects make {obj} proud. ',
+      'It’s been awesome to see {name} {verb}, especially with {specific}. '
+    ];
+    var parentLines = [
+      'What we love most as parents is {likes}. ',
+      'From our side, {likes}. '
+    ];
+    var callouts = [
+      'Book a free gamebuilding session today!',
+      'Set up a free visit — your child will love it!'
+    ];
+    function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+    function oxford(a){ var x=a.filter(Boolean); if(x.length<=1) return x.join(''); if(x.length===2) return x.join(' and '); return x.slice(0,-1).join(', ')+', and '+x[x.length-1]; }
+
+    function buildCaption(o){
+      var p = programSnippets[o.program] || programSnippets.CREATE;
+      var pr = pronouns(o.gender); var be = beVerb(o.gender);
+      var ctx = { name:capName(o.name), program:o.program, dojo:o.dojo, be:be, subj:pr.subj, subjCap:pr.subj.charAt(0).toUpperCase()+pr.subj.slice(1), obj:pr.obj, poss:pr.poss, possCap:pr.possCap, verb:pick(p.verbs), specific:pick(p.specifics) };
+      var opener = pick(openers).replace(/\{name\}/g,ctx.name).replace(/\{program\}/g,ctx.program).replace(/\{dojo\}/g,ctx.dojo).replace(/\{be\}/g,ctx.be);
+      var middle = pick(middles).replace(/\{name\}/g,ctx.name).replace(/\{subjCap\}/g,ctx.subjCap).replace(/\{obj\}/g,ctx.obj).replace(/\{possCap\}/g,ctx.possCap).replace(/\{be\}/g,ctx.be).replace(/\{verb\}/g,ctx.verb).replace(/\{specific\}/g,ctx.specific);
+      var likeLine = o.likes.length? pick(parentLines).replace('{likes}', oxford(o.likes)) : '';
+      var call = pick(callouts);
+      var link = booking[o.dojo] || 'https://www.codeninjas.com/';
+      return (opener + middle + likeLine + '\n\n' + call + '\n' + link).trim();
+    }
+
+    function setStep(i){
+      var total = state.total; i = Math.max(0, Math.min(i, total-1)); state.step = i;
+      els.steps.forEach(function(s,idx){ s.classList.toggle('active', idx===i); });
+      els.stepLabel.textContent = 'Step ' + (i+1) + ' of ' + total;
+      var pct = (i/(total-1))*100; els.progressBar.style.insetInlineEnd = (100 - pct) + '%';
+      els.back.disabled = (i===0);
+      els.back.textContent = (i===total-1)? '↺ Start over' : '◀ Back';
+      if(i===total-1){
+        els.next.classList.add('hidden');
+        generate();
+      } else {
+        els.next.classList.remove('hidden');
       }
-      function beVerb(g){ return g === 'other' ? 'are' : 'is'; }
+    }
 
-      // Program content
-      const programSnippets = {
-        JR: {
-          verbs: ['building confidence','learning sequencing','tackling logic puzzles','exploring early STEM','asking great problem‑solving questions'],
-          specifics: ['visual lessons','hands‑on projects','play‑based learning','engaging mini‑challenges']
-        },
-        CREATE: {
-          verbs: ['coding games','leveling up through belts','debugging like a champ','thinking like a developer','testing and improving ideas'],
-          specifics: ['MakeCode to JavaScript','game design and testing','mentor‑guided projects','real debugging practice']
-        },
-        'Robotics Academy': {
-          verbs: ['building and programming robots','mixing hardware with code','solving real‑world challenges','iterating like an engineer'],
-          specifics: ['sensors and motors','engineering design','team problem‑solving','try‑and‑improve cycles']
-        },
-        'AI Academy': {
-          verbs: ['experimenting with AI','learning how models work','using technology responsibly','thinking critically about outputs'],
-          specifics: ['ethical AI basics','hands‑on projects','data and logic thinking','age‑appropriate concepts']
-        },
-        Clubs: {
-          verbs: ['creating with friends','showing off new ideas','stretching creativity','trying something new each week'],
-          specifics: ['weekly themes','collab builds','low‑pressure fun','mentor‑led showcases']
-        }
-      };
+    function validateStep(i){
+      if(i===0) return !!els.location.value;
+      if(i===1) return !!els.child.value.trim();
+      if(i===2) return !!els.gender.value;
+      if(i===3) return !!els.program.value;
+      return true;
+    }
 
-      // Likes
-      const likeOptions = [
-        'friendly, helpful mentors',
-        'clear, belt‑based progress',
-        'flexible scheduling',
-        'welcoming community',
-        'safe, clean dojo',
-        'sessions are genuinely fun',
-        'real‑world skills they can use',
-        'clear progress and feedback',
-        'kids make friends quickly'
-      ];
+    function next(){ if(!validateStep(state.step)){ showToast('Please complete this step.'); return; } setStep(state.step+1); }
+    function back(){ if(state.step===state.total-1){ resetForm(); setStep(0); return; } if(state.step>0) setStep(state.step-1); }
+    function resetForm(){ els.location.value=''; els.child.value=''; els.gender.value=''; els.program.value=''; renderLikeChips(); els.caption.value=''; clearQR(); }
 
-      // Program cool bits
-      const coolByProgram = {
-        JR: ['block‑based puzzles','sticker milestones','hands‑on builds','patient mentors'],
-        CREATE: ['belts and gamified goals','designing and testing games','JavaScript progression','project gallery'],
-        'Robotics Academy': ['building bots from scratch','sensor challenges','friendly competitions','creative robot designs'],
-        'AI Academy': ['training mini models','smart prompt crafting','talking about AI ethics','seeing ideas come to life'],
-        Clubs: ['weekly themes','collab projects','show‑and‑tell','community vibes']
-      };
+    function generate(){
+      var likes = getSelectedLikes();
+      var params = { gender:els.gender.value, name:els.child.value, program:els.program.value, dojo:els.location.value, likes:likes };
+      els.caption.value = 'Making your post…'; els.copy.disabled = true; els.postFb.disabled = true; els.downloadQR.disabled = true; els.qrStatus.textContent = '';
+      clearTimeout(genTimer);
+      genTimer = setTimeout(function(){
+        var text = buildCaption(params); els.caption.value = text; els.copy.disabled = false; els.postFb.disabled = false;
+        var link = booking[params.dojo] || 'https://www.codeninjas.com/';
+        renderQRFast(link);
+      }, 60);
+    }
 
-      function makeChip(label, group){
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'chip';
-        b.textContent = label;
-        b.setAttribute('aria-pressed','false');
-        b.addEventListener('click', function(){ const on=b.getAttribute('aria-pressed')==='true'; b.setAttribute('aria-pressed', on?'false':'true'); if(state.step===state.total-1) generate(); });
-        group.appendChild(b);
+    function reroll(){
+      var likes = getSelectedLikes();
+      var params = { gender:els.gender.value, name:els.child.value, program:els.program.value, dojo:els.location.value, likes:likes };
+      var text = buildCaption(params);
+      els.caption.value = text;
+      els.copy.disabled = false;
+      els.postFb.disabled = false;
+    }
+
+    function copyText(){
+      var t = (els.caption.value || '').trim(); if(!t) return;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(t).then(function(){ showToast('Copied!'); }).catch(function(){ showToast('Copied'); });
+      } else {
+        els.caption.select(); document.execCommand('copy'); showToast('Copied');
       }
+    }
 
-      function renderLikeChips(){ els.likesChips.innerHTML=''; likeOptions.forEach(function(l){ makeChip(l, els.likesChips); }); }
-      function renderCoolChips(){ const p = els.program.value || 'CREATE'; const list = (coolByProgram[p]||[]); els.coolChips.innerHTML=''; list.forEach(function(l){ makeChip(l, els.coolChips); }); }
-      function getSelectedFrom(group){ return Array.from(group.querySelectorAll('.chip[aria-pressed="true"]')).map(function(b){ return b.textContent.trim(); }); }
+    function shareFacebook(){ var t = (els.caption.value || '').trim(); if(!t) return; var link = 'https://www.codeninjas.com/'; var u = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(link)+'&quote='+encodeURIComponent(t); window.open(u,'_blank','noopener,noreferrer,width=780,height=540'); }
 
-      // Sentence pieces — high variance and gender‑aware
-      const openers = [
-        'Proud parent alert: {name} {be} thriving in {program} at Code Ninjas {dojo}. ',
-        '{name} absolutely loves {program} at Code Ninjas {dojo}. ',
-        'Shoutout to Code Ninjas {dojo} — {name} looks forward to every {program} session. ',
-        'Every visit to Code Ninjas {dojo} has {name} buzzing — {program} just clicks. ',
-        'We are so impressed with {name}’s growth in {program} at Code Ninjas {dojo}. ',
-        '{subjectCap} has really found {poss} thing in {program} at Code Ninjas {dojo}. ',
-        'The confidence {name} brings home from {program} at Code Ninjas {dojo} is next‑level. ',
-        'Nothing beats watching {name} light up during {program} at Code Ninjas {dojo}. '
-      ];
+    // —— QR with center image cutout & fast upgrade ——
+    var centerImg = null;
+    var OFFICIAL_IMG_URL = 'https://www.codeninjas.com/hubfs/CodeNinjas%20-%20Marketting%20Website/About/expert-mentors@2x.png';
+    var canvasTainted = false; // true when image had to be loaded without CORS
 
-      const middles = [
-        '{subjCap} {be} {verb} with {specific}. {possCap} projects make {obj} proud. ',
-        'It’s been awesome to see {name} {verb}, especially with {specific}. ',
-        'Week after week, {subj} {be} {verb} thanks to {specific} and great mentors. ',
-        'Between {specific} and patient mentors, {name} {be} really growing. ',
-        'Watching {name} dive into {specific} has been the highlight of our week. ',
-        '{subjCap} talks about {poss} builds nonstop — we love it. '
-      ];
+    function clearQR(){ var ctx=els.qrCanvas.getContext('2d'); ctx.clearRect(0,0,els.qrCanvas.width,els.qrCanvas.height); els.downloadQR.disabled=true; }
 
-      const parentLines = [
-        'As a parent, I really appreciate {likes}. ',
-        'From our side, {likes}. ',
-        'What we love most is {likes}. ',
-        'Parent take: {likes}. '
-      ];
+    // Try CORS first so canvas stays exportable; fallback without CORS (taints canvas)
+    function loadCenterImage(callback){
+      var tryCors = new Image();
+      tryCors.crossOrigin = 'anonymous';
+      tryCors.onload = function(){ canvasTainted = false; centerImg = tryCors; callback(centerImg); };
+      tryCors.onerror = function(){
+        var fallback = new Image();
+        fallback.onload = function(){ canvasTainted = true; centerImg = fallback; callback(centerImg); };
+        fallback.onerror = function(){ callback(null); };
+        fallback.src = OFFICIAL_IMG_URL; // no crossOrigin -> will taint, but will display
+      };
+      tryCors.src = OFFICIAL_IMG_URL;
+    }
 
-      const coolLines = [
-        'The coolest parts have been {cools}. ',
-        'We especially love {cools}. ',
-        'Top highlights: {cools}. ',
-        'Favorite moments so far: {cools}. '
-      ];
+    function renderQRFast(url){
+      if(!url){ clearQR(); return; }
+      var PREVIEW = 448; // fast paint
+      var FINAL   = 1024; // crisp download
 
-      // Booking call‑to‑action variants (8 options)
-      const calloutLines = [
-        'Book a free gamebuilding session with your child today!',
-        'Schedule a free gamebuilding visit — your child will love it!',
-        'Grab a free gamebuilding session and come see the dojo!',
-        'Try a free gamebuilding session and see what it’s all about!',
-        'Book a free session and let them build their first game!',
-        'Set up a free gamebuilding session — quick and easy!',
-        'Claim a free gamebuilding session at your dojo!',
-        'Book a free gamebuilding session. See you soon!'
-      ];
+      var drawAt = function(SIZE, done){
+        els.qrHidden.innerHTML = '';
+        new QRCode(els.qrHidden, { text:url, width:SIZE, height:SIZE, colorDark:'#000', colorLight:'#fff', correctLevel: QRCode.CorrectLevel.H });
 
-      function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-      function oxfordJoin(items){ const a=items.filter(Boolean); if(a.length<=1) return a.join(''); if(a.length===2) return a.join(' and '); return a.slice(0,-1).join(', ')+', and '+a[a.length-1]; }
+        var paint = function(){
+          var src = els.qrHidden.querySelector('canvas'); if(!src){ if(done) done(); return; }
+          var ctx = els.qrCanvas.getContext('2d');
+          els.qrCanvas.width = SIZE; els.qrCanvas.height = SIZE;
+          ctx.imageSmoothingEnabled = false; ctx.fillStyle = '#fff'; ctx.fillRect(0,0,SIZE,SIZE); ctx.drawImage(src,0,0,SIZE,SIZE);
+          var hole = Math.round(SIZE*0.24), x = Math.round((SIZE-hole)/2), y = x;
+          // Punch rounded hole so QR wraps image
+          ctx.save(); ctx.globalCompositeOperation='destination-out';
+          (function(){ var r=Math.round(hole*0.18), w=hole, h=hole; ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.fill(); })();
+          ctx.restore();
 
-      function buildCaption(obj){
-        const gender = obj.gender; const name = obj.name; const program = obj.program; const dojo = obj.dojo; const likes = obj.likes; const cools = obj.cools;
-        const p = programSnippets[program] || programSnippets.CREATE;
-        const pr = pronouns(gender);
-        const be = beVerb(gender);
+          var drawCenter = function(img){
+            ctx.imageSmoothingEnabled = true;
+            var iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height; var scale=Math.min(hole/iw, hole/ih);
+            var dw=Math.round(iw*scale), dh=Math.round(ih*scale); var dx=x+Math.round((hole-dw)/2), dy=y+Math.round((hole-dh)/2);
+            // Key out near-white on a scaled buffer for speed
+            try{
+              var C = document.createElement('canvas'); C.width=dw; C.height=dh; var cctx=C.getContext('2d'); cctx.drawImage(img,0,0,dw,dh);
+              var data=cctx.getImageData(0,0,dw,dh), d=data.data;
+              for(var i=0;i<d.length;i+=4){ var r=d[i], g=d[i+1], b=d[i+2]; var avg=(r+g+b)/3, maxc=Math.max(r,g,b), minc=Math.min(r,g,b); if(avg>245 && (maxc-minc)<15){ d[i+3]=0; } }
+              cctx.putImageData(data,0,0); ctx.drawImage(C,dx,dy,dw,dh);
+            }catch(e){ ctx.drawImage(img,dx,dy,dw,dh); }
+            if(done) done();
+          };
 
-        const ctx = {
-          name: capName(name),
-          program: program,
-          dojo: dojo,
-          be: be,
-          subj: pr.subj,
-          subjCap: pr.subj.charAt(0).toUpperCase()+pr.subj.slice(1),
-          obj: pr.obj,
-          poss: pr.poss,
-          possCap: pr.possCap,
-          subjectCap: 'My ' + pr.noun,
-          verb: pick(p.verbs),
-          specific: pick(p.specifics)
+          if(centerImg && centerImg.complete){ drawCenter(centerImg); }
+          else { loadCenterImage(function(im){ if(im){ drawCenter(im); } if(done) done(); }); }
         };
 
-        const opener = pick(openers)
-          .replaceAll('{name}', ctx.name)
-          .replaceAll('{program}', ctx.program)
-          .replaceAll('{dojo}', ctx.dojo)
-          .replaceAll('{subjectCap}', ctx.subjectCap)
-          .replaceAll('{poss}', ctx.poss)
-          .replaceAll('{be}', ctx.be);
+        if('requestAnimationFrame' in window) requestAnimationFrame(paint); else setTimeout(paint,0);
+      };
 
-        const middle = pick(middles)
-          .replaceAll('{name}', ctx.name)
-          .replaceAll('{subj}', ctx.subj)
-          .replaceAll('{subjCap}', ctx.subjCap)
-          .replaceAll('{obj}', ctx.obj)
-          .replaceAll('{poss}', ctx.poss)
-          .replaceAll('{possCap}', ctx.possCap)
-          .replaceAll('{be}', ctx.be)
-          .replaceAll('{verb}', ctx.verb)
-          .replaceAll('{specific}', ctx.specific);
-
-        var likeLine = '';
-        if(likes.length){ likeLine = pick(parentLines).replace('{likes}', oxfordJoin(likes)); }
-        var coolLine = '';
-        if(cools.length){ coolLine = pick(coolLines).replace('{cools}', oxfordJoin(cools)); }
-
-        const callout = pick(calloutLines);
-        const link = booking[dojo] ? booking[dojo] : 'https://www.codeninjas.com/';
-
-        return (
-          opener + middle + likeLine + coolLine + '\n\n' + callout + '\n' + link
-        ).trim();
-      }
-
-      function setStep(i){
-        const total = state.total;
-        if(i < 0) i = 0;
-        if(i > total - 1) i = total - 1;
-        state.step = i;
-        els.steps.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
-        els.stepLabel.textContent = 'Step ' + (i+1) + ' of ' + total;
-        const pct = (i/(total-1))*100;
-        els.progressBar.style.insetInlineEnd = (100 - pct) + '%';
-        // Manage nav per step
-        els.back.disabled = (i === 0);
-        els.back.textContent = (i === total - 1) ? '↺ Restart' : '◀ Back';
-        if(i === total - 1){
-          els.next.classList.add('hidden');
-          els.copy.disabled = true;
-          els.postFb.disabled = true;
-          generate();
-        } else {
-          els.next.classList.remove('hidden');
-          els.copy.disabled = true;
-          els.postFb.disabled = true;
-        }
-      }
-
-      function validateStep(i){
-        if(i === 0) return !!els.location.value;
-        if(i === 1) return !!els.child.value.trim();
-        if(i === 2) return !!els.gender.value;
-        if(i === 3) return !!els.program.value;
-        return true;
-      }
-
-      function resetForm(){
-        if(genTimer){ clearTimeout(genTimer); genTimer = null; }
-        els.location.value = '';
-        els.child.value = '';
-        els.gender.value = '';
-        els.program.value = '';
-        renderLikeChips();
-        els.coolChips.innerHTML = '';
-        els.caption.value = '';
-        els.copy.disabled = true;
-        els.postFb.disabled = true;
-      }
-
-      function next(){
-        if(!validateStep(state.step)){ showToast('Please complete this step.'); return; }
-        setStep(Math.min(state.step + 1, state.total - 1));
-      }
-
-      function back(){
-        if(state.step === state.total - 1){ resetForm(); setStep(0); return; }
-        if(state.step > 0) setStep(state.step - 1);
-      }
-
-      function generate(){
-        const likes = getSelectedFrom(els.likesChips);
-        const cools = getSelectedFrom(els.coolChips);
-        const params = {
-          gender: els.gender.value,
-          name: els.child.value,
-          program: els.program.value,
-          dojo: els.location.value,
-          likes: likes,
-          cools: cools
-        };
-        // UI: show loading + disable actions
-        els.caption.value = 'Generating caption…';
-        els.copy.disabled = true;
-        els.postFb.disabled = true;
-        if(genTimer){ clearTimeout(genTimer); }
-        const delay = 200 + Math.floor(Math.random() * 401); // 200–600ms
-        genTimer = setTimeout(function(){
-          const text = buildCaption(params);
-          els.caption.value = text;
-          els.copy.disabled = false;
-          els.postFb.disabled = false;
-        }, delay);
-      }
-
-      async function copyText(){
-        const t = els.caption.value.trim();
-        if(!t) return;
-        try { await navigator.clipboard.writeText(t); showToast('Copied to clipboard'); }
-        catch(e){ els.caption.select(); document.execCommand('copy'); showToast('Copied'); }
-      }
-      function shareFacebook(){
-        const t = els.caption.value.trim();
-        if(!t) return;
-        const bookingLink = booking[els.location.value] || 'https://www.codeninjas.com/';
-        const href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(bookingLink) + '&quote=' + encodeURIComponent(t);
-        window.open(href,'_blank','noopener,noreferrer,width=780,height=540');
-      }
-
-      // Keyboard: Enter to go Next (not inside caption)
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Enter'){
-          const ae = document.activeElement;
-          const tag = ae && ae.tagName;
-          if(tag === 'TEXTAREA') return; // allow line breaks in caption
-          if(e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
-          e.preventDefault();
-          next();
-        }
+      // Quick pass, then full-res upgrade without blocking UI
+      drawAt(PREVIEW, function(){
+        var upgrade = function(){ drawAt(FINAL, finalizeQR); };
+        if('requestIdleCallback' in window) requestIdleCallback(upgrade,{timeout:200}); else setTimeout(upgrade,0);
       });
+    }
 
-      // Events
-      els.back.addEventListener('click', back);
-      els.next.addEventListener('click', next);
-      els.shuffle.addEventListener('click', generate);
-      els.copy.addEventListener('click', copyText);
-      els.postFb.addEventListener('click', shareFacebook);
-      els.location.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
-      els.child.addEventListener('input', function(){ if(state.step===state.total-1) generate(); });
-      els.gender.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
-      els.program.addEventListener('change', function(){ renderCoolChips(); if(state.step===state.total-1) generate(); });
+    function finalizeQR(){
+      if(canvasTainted){
+        els.downloadQR.disabled = true;
+        els.qrStatus.textContent = 'Download unavailable: image host blocks it (CORS). You can still screenshot or swap to a CORS-enabled logo.';
+        return;
+      }
+      try {
+        // Accessing toDataURL will throw only if tainted; otherwise ok
+        void els.qrCanvas.toDataURL('image/png');
+        els.downloadQR.disabled = false;
+        els.qrStatus.textContent = 'Ready — click Download QR (PNG).';
+      } catch(e){
+        els.downloadQR.disabled = true;
+        els.qrStatus.textContent = 'Download unavailable: image host blocks it (CORS).';
+      }
+    }
 
-      // Init chips + first step
-      function init(){ renderLikeChips(); renderCoolChips(); setStep(0); }
-      init();
-    })();
+    function downloadQR(){
+      try {
+        var data=els.qrCanvas.toDataURL('image/png');
+        var a=document.createElement('a'); a.href=data; a.download='code-ninjas-qr.png';
+        document.body.appendChild(a); a.click(); a.remove();
+      } catch(e){ showToast('Download failed.'); }
+    }
+
+    // events
+    document.addEventListener('keydown', function(e){ if(e.key==='Enter'){ var tag=(document.activeElement||{}).tagName; if(tag==='TEXTAREA') return; if(e.shiftKey||e.ctrlKey||e.metaKey||e.altKey) return; e.preventDefault(); next(); }});
+    els.back.addEventListener('click', back); els.next.addEventListener('click', next);
+    els.copy.addEventListener('click', copyText); els.postFb.addEventListener('click', shareFacebook); els.shuffle.addEventListener('click', reroll);
+    els.location.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
+    els.child.addEventListener('input', function(){ if(state.step===state.total-1) generate(); });
+    els.gender.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
+    els.program.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
+    els.downloadQR.addEventListener('click', downloadQR);
+
+    function init(){
+      renderLikeChips(); setStep(0);
+      // Preload (CORS-first) to keep canvas exportable when possible
+      loadCenterImage(function(){ /* cached */ });
+    }
+    init();
+  })();
   </script>
 </body>
 </html>
