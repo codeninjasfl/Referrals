@@ -274,9 +274,7 @@
             </div>
             <div class="social-row" aria-label="Quick share suggestions">
               <span class="social-label">Quick share:</span>
-              <button class="btn social-btn" type="button" data-network="instagram"><span class="icon">◎</span> Instagram</button>
               <button class="btn social-btn" type="button" data-network="whatsapp"><span class="icon">✆</span> WhatsApp</button>
-              <button class="btn social-btn" type="button" data-network="imessage"><span class="icon">✉</span> iMessage</button>
             </div>
             <p class="mini">Tip: paste the caption into your favorite social app along with a photo of your child’s project.</p>
           </div>
@@ -695,25 +693,21 @@
       window.open(u, '_blank', 'noopener,noreferrer,width=780,height=540');
     }
 
-    // Social quick buttons — all primarily copy the caption (and in some cases open share URLs)
+    // Social quick buttons — copy caption; WhatsApp opens share URL
     function handleSocialClick(network){
       var text = (els.caption.value || '').trim();
       if(!text){
         showToast('Generate your caption first.');
         return;
       }
-
-      // All ensure caption copied; selected networks may also open helpers
       if(navigator.clipboard && navigator.clipboard.writeText){
         navigator.clipboard.writeText(text).catch(function(){});
-      }      if(network === 'whatsapp'){
-        var wa = 'https://wa.me/?text=' + encodeURIComponent(text);
-        window.open(wa, '_blank', 'noopener,noreferrer');
+      }
+      if(network === 'whatsapp'){
         var wa = 'https://wa.me/?text=' + encodeURIComponent(text);
         window.open(wa, '_blank', 'noopener,noreferrer');
       }
-
-      showToast('Ready to paste into ' + network.charAt(0).toUpperCase() + network.slice(1));
+      showToast('Ready to paste into ' + (network.charAt(0).toUpperCase() + network.slice(1)));
     }
 
     // QR with center image cutout & fast upgrade
