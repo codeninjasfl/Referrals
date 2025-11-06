@@ -7,32 +7,103 @@
   <title>Code Ninjas - Share Your Story For $100 Off</title>
   <meta name="description" content="Generate a social-ready post about your child’s Code Ninjas experience — and share a QR that links to your dojo’s signup page. Every referral equals $100 off your next month (stackable up to your dojo’s limit)." />
   <style>
-    :root{ --bg1:#0ea5e9; --bg2:#2563eb; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --brand:#2563eb; --accent:#22d3ee; --border:#e5e7eb; --radius:18px; --shadow:0 14px 34px rgba(2,6,23,.18), 0 2px 10px rgba(2,6,23,.08); }
+    :root{
+      --bg1:#0ea5e9;
+      --bg2:#2563eb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --brand:#2563eb;
+      --accent:#22d3ee;
+      --border:#e5e7eb;
+      --radius:18px;
+      --shadow:0 14px 34px rgba(2,6,23,.18), 0 2px 10px rgba(2,6,23,.08);
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg1),var(--bg2));font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;color:var(--ink)}
-    .wrap{min-height:100%;display:grid;place-items:start center;padding:20px}
+    html,body{
+      margin:0;
+      height:100%;
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;
+      color:var(--ink);
+    }
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:start center;
+      padding:20px;
+    }
     header{color:#eef6ff;text-align:center;margin-bottom:12px}
     header .brand{display:flex;align-items:center;justify-content:center;gap:10px}
     header img.logo{height:42px;width:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.15))}
     header h1{margin:6px 0 0;font-size:clamp(22px,4vw,34px)}
     header p{margin:6px 0 0;color:#dbeafe}
-    .card{width:min(920px,96vw);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+
+    .card{
+      width:min(920px,96vw);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
     .hint{color:var(--muted);font-size:12px;margin:0 0 10px}
     label{font-weight:700;display:block;margin:0 0 6px}
-    input,select,textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;font-size:16px}
+    input,select,textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      font-size:16px;
+    }
     textarea{min-height:160px;resize:vertical;background:#f8fafc}
-    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
-    .btn{appearance:none;border:1px solid var(--border);background:#f8fafc;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:800;min-height:48px}
+    .actions{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid var(--border);
+      background:#f8fafc;
+      border-radius:12px;
+      padding:12px 16px;
+      cursor:pointer;
+      font-weight:800;
+      min-height:48px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
     .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
     .btn.ghost{background:#fff}
-    .btn.icon{padding:12px;display:inline-flex;align-items:center;justify-content:center}
+    .btn.icon{padding:12px;width:44px;justify-content:center}
     .btn.icon svg{width:18px;height:18px;display:block}
     .btn:focus-visible{outline:3px solid color-mix(in oklab,var(--brand) 65%, white)}
     .btn:disabled{opacity:.55;cursor:not-allowed}
+
     .hidden{display:none !important}
-    .fade{animation:fade .25s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .fade{animation:fade .25s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
     @media (prefers-reduced-motion:reduce){.fade{animation:none}}
-    .toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease}
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:16px;
+      transform:translateX(-50%);
+      background:#111827;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      box-shadow:var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+      font-size:13px;
+    }
     .toast.show{opacity:1}
 
     /* Wizard */
@@ -47,20 +118,63 @@
     .final .panel{border:1px solid var(--border);border-radius:14px;padding:16px}
     .final h3{margin:0 0 8px}
     .caption-area{display:flex;flex-direction:column;gap:10px}
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     .mini{font-size:12px;color:#64748b}
 
-    /* Likes chips */
+    /* Likes chips & vibe chips */
     .chips{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{appearance:none;border:1px solid var(--border);background:#fff;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}
-    .chip[aria-pressed="true"]{background:color-mix(in oklab,var(--brand) 18%, white);border-color:var(--brand)}
+    .chip{
+      appearance:none;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 13px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .chip[aria-pressed="true"]{background:color-mix(in oklab,var(--brand) 18%, white);border-color:var(--brand);color:#111827}
     .chip:focus-visible{outline:3px solid color-mix(in oklab,var(--brand) 55%, white)}
+
+    .vibe-row{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+    .vibe-row .label{font-weight:600}
+    .vibe-toggles{display:flex;gap:6px;flex-wrap:wrap}
+    .chip-vibe{font-size:11px;padding:6px 11px}
 
     /* QR section */
     .qr-wrap{display:grid;gap:10px;justify-items:center}
     .qr-card{border:1px dashed var(--border);border-radius:12px;padding:10px;background:#fff;box-shadow:var(--shadow)}
     .qr-card canvas{display:block;width:min(320px,88vw);height:auto;border-radius:8px}
     .qr-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+
+    /* Social quick buttons */
+    .social-row{
+      display:flex;
+      gap:8px;
+      margin-top:4px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .social-label{font-size:11px;color:var(--muted)}
+    .social-btn{
+      padding:6px 10px;
+      min-height:auto;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      background:#f9fafb;
+    }
+    .social-btn span.icon{
+      width:14px;
+      height:14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+    }
 
     @media (max-width:880px){.final{grid-template-columns:1fr}}
   </style>
@@ -134,13 +248,35 @@
         <div class="final">
           <div class="panel caption-area">
             <h3>All set! Here’s your post</h3>
+            <div class="vibe-row">
+              <span class="mini label">Choose your vibe:</span>
+              <div class="vibe-toggles" role="group" aria-label="Caption style">
+                <button type="button" class="chip chip-vibe" data-vibe="warm" aria-pressed="true">Warm &amp; Proud</button>
+                <button type="button" class="chip chip-vibe" data-vibe="snappy" aria-pressed="false">Short &amp; Snappy</button>
+                <button type="button" class="chip chip-vibe" data-vibe="fun" aria-pressed="false">Fun &amp; Playful</button>
+              </div>
+            </div>
             <textarea id="caption" readonly></textarea>
             <div class="cta-row">
               <button id="shuffle" class="btn ghost icon" type="button" title="Shuffle phrasing" aria-label="Shuffle phrasing">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="11" y2="13"></line><line x1="4" y1="4" x2="9" y2="9"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="12" x2="9" y2="12"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="16 3 21 3 21 8"></polyline>
+                  <line x1="4" y1="20" x2="11" y2="13"></line>
+                  <line x1="4" y1="4" x2="9" y2="9"></line>
+                  <polyline points="21 16 21 21 16 21"></polyline>
+                  <line x1="15" y1="15" x2="21" y2="21"></line>
+                  <line x1="4" y1="12" x2="9" y2="12"></line>
+                </svg>
               </button>
               <button id="copy" class="btn" type="button" disabled>Copy caption</button>
+              <button id="copyLinkOnly" class="btn ghost" type="button" disabled>Copy signup link only</button>
               <button id="postFb" class="btn primary" type="button" disabled>Share on Facebook</button>
+            </div>
+            <div class="social-row" aria-label="Quick share suggestions">
+              <span class="social-label">Quick share:</span>
+              <button class="btn social-btn" type="button" data-network="instagram"><span class="icon">◎</span> Instagram</button>
+              <button class="btn social-btn" type="button" data-network="whatsapp"><span class="icon">✆</span> WhatsApp</button>
+              <button class="btn social-btn" type="button" data-network="imessage"><span class="icon">✉</span> iMessage</button>
             </div>
             <p class="mini">Tip: paste the caption into your favorite social app along with a photo of your child’s project.</p>
           </div>
@@ -173,26 +309,48 @@
   <script>
   (function(){
     'use strict';
-    // Helpers
+
     function byId(id){ return document.getElementById(id); }
 
     var els = {
-      stepLabel: byId('stepLabel'), progressBar: byId('progressBar'),
+      stepLabel: byId('stepLabel'),
+      progressBar: byId('progressBar'),
       steps: Array.prototype.slice.call(document.querySelectorAll('.step')),
-      back: byId('back'), next: byId('next'),
-      caption: byId('caption'), copy: byId('copy'), postFb: byId('postFb'),
-      gender: byId('gender'), location: byId('location'), child: byId('child'), program: byId('program'),
-      likesChips: byId('likesChips'), shuffle: byId('shuffle'),
-      // QR bits
-      qrCanvas: byId('qrCanvas'), qrHidden: byId('qrHidden'), downloadQR: byId('downloadQR'), qrStatus: byId('qrStatus'),
+      back: byId('back'),
+      next: byId('next'),
+      caption: byId('caption'),
+      copy: byId('copy'),
+      copyLinkOnly: byId('copyLinkOnly'),
+      postFb: byId('postFb'),
+      gender: byId('gender'),
+      location: byId('location'),
+      child: byId('child'),
+      program: byId('program'),
+      likesChips: byId('likesChips'),
+      shuffle: byId('shuffle'),
+      qrCanvas: byId('qrCanvas'),
+      qrHidden: byId('qrHidden'),
+      downloadQR: byId('downloadQR'),
+      qrStatus: byId('qrStatus'),
       toast: byId('toast')
     };
 
-    var state = { step: 0, total: 6 };
+    var state = { step: 0, total: 6, vibe: 'warm' };
     var genTimer = null;
 
-    function showToast(msg){ els.toast.textContent = msg; els.toast.classList.add('show'); setTimeout(function(){ els.toast.classList.remove('show'); }, 1500); }
-    function capName(s){ var t = String(s||'').trim(); if(!t) return ''; return t.split(' ').map(function(w){ return w? w.charAt(0).toUpperCase()+w.slice(1).toLowerCase(): ''; }).join(' '); }
+    function showToast(msg){
+      els.toast.textContent = msg;
+      els.toast.classList.add('show');
+      setTimeout(function(){ els.toast.classList.remove('show'); }, 1500);
+    }
+
+    function capName(s){
+      var t = String(s||'').trim();
+      if(!t) return '';
+      return t.split(' ').map(function(w){
+        return w ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : '';
+      }).join(' ');
+    }
 
     // booking links
     var booking = {
@@ -202,63 +360,202 @@
     };
 
     // pronouns
-    function pronouns(g){ return g==='boy'?{subj:'he',obj:'him',poss:'his',possCap:'His',noun:'son'}: g==='girl'?{subj:'she',obj:'her',poss:'her',possCap:'Her',noun:'daughter'}:{subj:'they',obj:'them',poss:'their',possCap:'Their',noun:'child'}; }
-    function beVerb(g){ return g==='other'?'are':'is'; }
+    function pronouns(g){
+      return g==='boy'
+        ? {subj:'he',obj:'him',poss:'his',possCap:'His',noun:'son'}
+        : g==='girl'
+          ? {subj:'she',obj:'her',poss:'her',possCap:'Her',noun:'daughter'}
+          : {subj:'they',obj:'them',poss:'their',possCap:'Their',noun:'child'};
+    }
+    function beVerb(g){ return g==='other' ? 'are' : 'is'; }
 
     // likes chips
-    var likeOptions = ['friendly, helpful mentors','clear, belt‑based progress','flexible scheduling','welcoming community','safe, clean dojo','sessions are genuinely fun','real‑world skills they can use','clear progress and feedback','kids make friends quickly'];
-    function makeChip(label){ var b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=label; b.setAttribute('aria-pressed','false'); b.addEventListener('click',function(){ var on=b.getAttribute('aria-pressed')==='true'; b.setAttribute('aria-pressed', on?'false':'true'); if(state.step===state.total-1) generate();}); return b; }
-    function renderLikeChips(){ els.likesChips.innerHTML=''; likeOptions.forEach(function(l){ els.likesChips.appendChild(makeChip(l)); }); }
-    function getSelectedLikes(){ return Array.prototype.slice.call(els.likesChips.querySelectorAll('[aria-pressed="true"]')).map(function(b){ return b.textContent.trim(); }); }
+    var likeOptions = [
+      'friendly, helpful mentors',
+      'clear, belt‑based progress',
+      'flexible scheduling',
+      'welcoming community',
+      'safe, clean dojo',
+      'sessions are genuinely fun',
+      'real‑world skills they can use',
+      'clear progress and feedback',
+      'kids make friends quickly'
+    ];
 
-    // caption pieces
+    function makeChip(label){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.textContent = label;
+      b.setAttribute('aria-pressed','false');
+      b.addEventListener('click', function(){
+        var on = b.getAttribute('aria-pressed') === 'true';
+        b.setAttribute('aria-pressed', on ? 'false' : 'true');
+        if(state.step === state.total-1) generate();
+      });
+      return b;
+    }
+
+    function renderLikeChips(){
+      els.likesChips.innerHTML='';
+      likeOptions.forEach(function(l){ els.likesChips.appendChild(makeChip(l)); });
+    }
+
+    function getSelectedLikes(){
+      return Array.prototype.slice
+        .call(els.likesChips.querySelectorAll('[aria-pressed="true"]'))
+        .map(function(b){ return b.textContent.trim(); });
+    }
+
+    // Vibe configurations
     var programSnippets = {
-      JR:{ verbs:['building confidence','learning sequencing','tackling logic puzzles','exploring early STEM'], specifics:['visual lessons','hands‑on projects','play‑based learning'] },
-      CREATE:{ verbs:['coding games','leveling up through belts','debugging like a champ','thinking like a developer'], specifics:['MakeCode to JavaScript','game design and testing','mentor‑guided projects'] },
-      'Robotics Academy':{ verbs:['building and programming robots','mixing hardware with code','solving real‑world challenges'], specifics:['sensors and motors','engineering design','team problem‑solving'] },
-      'AI Academy':{ verbs:['experimenting with AI','learning how models work','using technology responsibly'], specifics:['ethical AI basics','hands‑on projects','logic and data thinking'] },
-      Clubs:{ verbs:['creating with friends','showing off new ideas','trying something new each week'], specifics:['weekly themes','collab builds','mentor‑led showcases'] }
+      JR:{
+        verbs:['building confidence','learning sequencing','tackling logic puzzles','exploring early STEM'],
+        specifics:['visual lessons','hands‑on projects','play‑based learning']
+      },
+      CREATE:{
+        verbs:['coding games','leveling up through belts','debugging like a champ','thinking like a developer'],
+        specifics:['MakeCode to JavaScript','game design and testing','mentor‑guided projects']
+      },
+      'Robotics Academy':{
+        verbs:['building and programming robots','mixing hardware with code','solving real‑world challenges'],
+        specifics:['sensors and motors','engineering design','team problem‑solving']
+      },
+      'AI Academy':{
+        verbs:['experimenting with AI','learning how models work','using technology responsibly'],
+        specifics:['ethical AI basics','hands‑on projects','logic and data thinking']
+      },
+      'Clubs':{
+        verbs:['creating with friends','showing off new ideas','trying something new each week'],
+        specifics:['weekly themes','collab builds','mentor‑led showcases']
+      }
     };
-    var openers = [
-      'Proud parent alert: {name} {be} thriving in {program} at Code Ninjas {dojo}. ',
-      '{name} absolutely loves {program} at Code Ninjas {dojo}. ',
-      'Shoutout to Code Ninjas {dojo} — {name} looks forward to every {program} session. '
-    ];
-    var middles = [
-      '{subjCap} {be} {verb} with {specific}. {possCap} projects make {obj} proud. ',
-      'It’s been awesome to see {name} {verb}, especially with {specific}. '
-    ];
-    var parentLines = [
-      'What we love most as parents is {likes}. ',
-      'From our side, {likes}. '
-    ];
-    var callouts = [
-      'Book a free gamebuilding session today!',
-      'Set up a free visit — your child will love it!'
-    ];
+
+    var vibes = {
+      warm: {
+        openers: [
+          'Proud parent alert: {name} {be} thriving in {program} at Code Ninjas {dojo}. ',
+          '{name} absolutely loves {program} at Code Ninjas {dojo}. ',
+          'Shoutout to Code Ninjas {dojo} — {name} looks forward to every {program} session. '
+        ],
+        middles: [
+          '{subjCap} {be} {verb} with {specific}. {possCap} projects make {obj} proud. ',
+          'It’s been awesome to see {name} {verb}, especially with {specific}. '
+        ],
+        parentLines: [
+          'What we love most as parents is {likes}. ',
+          'From our side, {likes}. '
+        ],
+        callouts: [
+          'Book a free gamebuilding session today!',
+          'Set up a free visit — your child will love it!'
+        ]
+      },
+      snappy: {
+        openers: [
+          '{name} {be} leveling up at Code Ninjas {dojo}. ',
+          '{name} + {program} at Code Ninjas {dojo} = big wins. '
+        ],
+        middles: [
+          '{subjCap} {be} {verb}. ',
+          '{subjCap} leave(s) each session excited. '
+        ],
+        parentLines: [
+          '{likes} ',
+          'We’re impressed — {likes} '
+        ],
+        callouts: [
+          'Check it out:',
+          'Grab a free session here:'
+        ]
+      },
+      fun: {
+        openers: [
+          '{name} is in full ninja mode with {program} at Code Ninjas {dojo}! ',
+          'Big smiles after every {program} day at Code Ninjas {dojo}. '
+        ],
+        middles: [
+          '{subjCap} {be} busy {verb} and showing off {specific}. ',
+          'Watching {name} geek out over new builds has been a blast. '
+        ],
+        parentLines: [
+          'Parent perks: {likes} ',
+          'We’re obsessed because {likes} '
+        ],
+        callouts: [
+          'Come join the fun — free gamebuilding session:',
+          'Send your kiddo to try it out:'
+        ]
+      }
+    };
+
     function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
-    function oxford(a){ var x=a.filter(Boolean); if(x.length<=1) return x.join(''); if(x.length===2) return x.join(' and '); return x.slice(0,-1).join(', ')+', and '+x[x.length-1]; }
+
+    function oxford(a){
+      var x = a.filter(Boolean);
+      if(x.length <= 1) return x.join('');
+      if(x.length === 2) return x.join(' and ');
+      return x.slice(0,-1).join(', ') + ', and ' + x[x.length-1];
+    }
 
     function buildCaption(o){
+      var vibeKey = state.vibe || 'warm';
+      var cfg = vibes[vibeKey] || vibes.warm;
       var p = programSnippets[o.program] || programSnippets.CREATE;
-      var pr = pronouns(o.gender); var be = beVerb(o.gender);
-      var ctx = { name:capName(o.name), program:o.program, dojo:o.dojo, be:be, subj:pr.subj, subjCap:pr.subj.charAt(0).toUpperCase()+pr.subj.slice(1), obj:pr.obj, poss:pr.poss, possCap:pr.possCap, verb:pick(p.verbs), specific:pick(p.specifics) };
-      var opener = pick(openers).replace(/\{name\}/g,ctx.name).replace(/\{program\}/g,ctx.program).replace(/\{dojo\}/g,ctx.dojo).replace(/\{be\}/g,ctx.be);
-      var middle = pick(middles).replace(/\{name\}/g,ctx.name).replace(/\{subjCap\}/g,ctx.subjCap).replace(/\{obj\}/g,ctx.obj).replace(/\{possCap\}/g,ctx.possCap).replace(/\{be\}/g,ctx.be).replace(/\{verb\}/g,ctx.verb).replace(/\{specific\}/g,ctx.specific);
-      var likeLine = o.likes.length? pick(parentLines).replace('{likes}', oxford(o.likes)) : '';
-      var call = pick(callouts);
+      var pr = pronouns(o.gender);
+      var be = beVerb(o.gender);
+      var ctx = {
+        name: capName(o.name),
+        program: o.program,
+        dojo: o.dojo,
+        be: be,
+        subj: pr.subj,
+        subjCap: pr.subj.charAt(0).toUpperCase() + pr.subj.slice(1),
+        obj: pr.obj,
+        poss: pr.poss,
+        possCap: pr.possCap,
+        verb: pick(p.verbs),
+        specific: pick(p.specifics)
+      };
+
+      var opener = pick(cfg.openers)
+        .replace(/\{name\}/g, ctx.name)
+        .replace(/\{program\}/g, ctx.program)
+        .replace(/\{dojo\}/g, ctx.dojo)
+        .replace(/\{be\}/g, ctx.be);
+
+      var middle = pick(cfg.middles)
+        .replace(/\{name\}/g, ctx.name)
+        .replace(/\{subjCap\}/g, ctx.subjCap)
+        .replace(/\{obj\}/g, ctx.obj)
+        .replace(/\{possCap\}/g, ctx.possCap)
+        .replace(/\{be\}/g, ctx.be)
+        .replace(/\{verb\}/g, ctx.verb)
+        .replace(/\{specific\}/g, ctx.specific);
+
+      var likeLine = '';
+      if(o.likes.length){
+        likeLine = pick(cfg.parentLines)
+          .replace('{likes}', oxford(o.likes));
+      }
+
+      var call = pick(cfg.callouts);
       var link = booking[o.dojo] || 'https://www.codeninjas.com/';
+
       return (opener + middle + likeLine + '\n\n' + call + '\n' + link).trim();
     }
 
     function setStep(i){
-      var total = state.total; i = Math.max(0, Math.min(i, total-1)); state.step = i;
-      els.steps.forEach(function(s,idx){ s.classList.toggle('active', idx===i); });
-      els.stepLabel.textContent = 'Step ' + (i+1) + ' of ' + total;
-      var pct = (i/(total-1))*100; els.progressBar.style.insetInlineEnd = (100 - pct) + '%';
-      els.back.disabled = (i===0);
-      els.back.textContent = (i===total-1)? '↺ Start over' : '◀ Back';
-      if(i===total-1){
+      var total = state.total;
+      i = Math.max(0, Math.min(i, total - 1));
+      state.step = i;
+      els.steps.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+      els.stepLabel.textContent = 'Step ' + (i + 1) + ' of ' + total;
+      var pct = (i / (total - 1)) * 100;
+      els.progressBar.style.insetInlineEnd = (100 - pct) + '%';
+      els.back.disabled = (i === 0);
+      els.back.textContent = (i === total - 1) ? '↺ Start over' : '◀ Back';
+      if(i === total - 1){
         els.next.classList.add('hidden');
         generate();
       } else {
@@ -267,32 +564,89 @@
     }
 
     function validateStep(i){
-      if(i===0) return !!els.location.value;
-      if(i===1) return !!els.child.value.trim();
-      if(i===2) return !!els.gender.value;
-      if(i===3) return !!els.program.value;
+      if(i === 0) return !!els.location.value;
+      if(i === 1) return !!els.child.value.trim();
+      if(i === 2) return !!els.gender.value;
+      if(i === 3) return !!els.program.value;
       return true;
     }
 
-    function next(){ if(!validateStep(state.step)){ showToast('Please complete this step.'); return; } setStep(state.step+1); }
-    function back(){ if(state.step===state.total-1){ resetForm(); setStep(0); return; } if(state.step>0) setStep(state.step-1); }
-    function resetForm(){ els.location.value=''; els.child.value=''; els.gender.value=''; els.program.value=''; renderLikeChips(); els.caption.value=''; clearQR(); }
+    function next(){
+      if(!validateStep(state.step)){
+        showToast('Please complete this step.');
+        return;
+      }
+      setStep(state.step + 1);
+    }
+
+    function back(){
+      if(state.step === state.total - 1){
+        resetForm();
+        setStep(0);
+        return;
+      }
+      if(state.step > 0) setStep(state.step - 1);
+    }
+
+    function resetForm(){
+      els.location.value = '';
+      els.child.value = '';
+      els.gender.value = '';
+      els.program.value = '';
+      renderLikeChips();
+      els.caption.value = '';
+      els.copy.disabled = true;
+      els.copyLinkOnly.disabled = true;
+      els.postFb.disabled = true;
+      clearQR();
+      state.vibe = 'warm';
+      syncVibeButtons();
+    }
 
     function generate(){
       var likes = getSelectedLikes();
-      var params = { gender:els.gender.value, name:els.child.value, program:els.program.value, dojo:els.location.value, likes:likes };
-      els.caption.value = 'Making your post…'; els.copy.disabled = true; els.postFb.disabled = true; els.downloadQR.disabled = true; els.qrStatus.textContent = '';
+      var params = {
+        gender: els.gender.value,
+        name: els.child.value,
+        program: els.program.value,
+        dojo: els.location.value,
+        likes: likes
+      };
+
+      els.caption.value = 'Making your post…';
+      els.copy.disabled = true;
+      els.copyLinkOnly.disabled = true;
+      els.postFb.disabled = true;
+      els.downloadQR.disabled = true;
+      els.qrStatus.textContent = '';
       clearTimeout(genTimer);
+
       genTimer = setTimeout(function(){
-        var text = buildCaption(params); els.caption.value = text; els.copy.disabled = false; els.postFb.disabled = false;
+        var text = buildCaption(params);
+        els.caption.value = text;
+        els.copy.disabled = false;
+        els.postFb.disabled = false;
         var link = booking[params.dojo] || 'https://www.codeninjas.com/';
-        renderQRFast(link);
+        if(link){
+          els.copyLinkOnly.disabled = false;
+          renderQRFast(link);
+        } else {
+          els.copyLinkOnly.disabled = true;
+          clearQR();
+        }
       }, 60);
     }
 
     function reroll(){
+      if(state.step !== state.total - 1) return;
       var likes = getSelectedLikes();
-      var params = { gender:els.gender.value, name:els.child.value, program:els.program.value, dojo:els.location.value, likes:likes };
+      var params = {
+        gender: els.gender.value,
+        name: els.child.value,
+        program: els.program.value,
+        dojo: els.location.value,
+        likes: likes
+      };
       var text = buildCaption(params);
       els.caption.value = text;
       els.copy.disabled = false;
@@ -300,125 +654,292 @@
     }
 
     function copyText(){
-      var t = (els.caption.value || '').trim(); if(!t) return;
+      var t = (els.caption.value || '').trim();
+      if(!t) return;
       if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(t).then(function(){ showToast('Copied!'); }).catch(function(){ showToast('Copied'); });
+        navigator.clipboard.writeText(t)
+          .then(function(){ showToast('Caption copied'); })
+          .catch(function(){ showToast('Copied'); });
       } else {
-        els.caption.select(); document.execCommand('copy'); showToast('Copied');
+        els.caption.select();
+        document.execCommand('copy');
+        showToast('Copied');
       }
     }
 
-    function shareFacebook(){ var t = (els.caption.value || '').trim(); if(!t) return; var link = 'https://www.codeninjas.com/'; var u = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(link)+'&quote='+encodeURIComponent(t); window.open(u,'_blank','noopener,noreferrer,width=780,height=540'); }
+    function copyLinkOnly(){
+      var dojo = els.location.value;
+      var link = booking[dojo] || 'https://www.codeninjas.com/';
+      if(!link) return;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(link)
+          .then(function(){ showToast('Signup link copied'); })
+          .catch(function(){ showToast('Link copied'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = link;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        showToast('Link copied');
+      }
+    }
 
-    // —— QR with center image cutout & fast upgrade ——
+    function shareFacebook(){
+      var t = (els.caption.value || '').trim();
+      if(!t) return;
+      var dojo = els.location.value;
+      var link = booking[dojo] || 'https://www.codeninjas.com/';
+      var u = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link) + '&quote=' + encodeURIComponent(t);
+      window.open(u, '_blank', 'noopener,noreferrer,width=780,height=540');
+    }
+
+    // Social quick buttons — all primarily copy the caption (and in some cases open share URLs)
+    function handleSocialClick(network){
+      var text = (els.caption.value || '').trim();
+      if(!text){
+        showToast('Generate your caption first.');
+        return;
+      }
+
+      // All ensure caption copied; selected networks may also open helpers
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).catch(function(){});
+      }      if(network === 'whatsapp'){
+        var wa = 'https://wa.me/?text=' + encodeURIComponent(text);
+        window.open(wa, '_blank', 'noopener,noreferrer');
+        var wa = 'https://wa.me/?text=' + encodeURIComponent(text);
+        window.open(wa, '_blank', 'noopener,noreferrer');
+      }
+
+      showToast('Ready to paste into ' + network.charAt(0).toUpperCase() + network.slice(1));
+    }
+
+    // QR with center image cutout & fast upgrade
     var centerImg = null;
     var OFFICIAL_IMG_URL = 'https://www.codeninjas.com/hubfs/CodeNinjas%20-%20Marketting%20Website/About/expert-mentors@2x.png';
-    var canvasTainted = false; // true when image had to be loaded without CORS
+    var canvasTainted = false;
 
-    function clearQR(){ var ctx=els.qrCanvas.getContext('2d'); ctx.clearRect(0,0,els.qrCanvas.width,els.qrCanvas.height); els.downloadQR.disabled=true; }
+    function clearQR(){
+      var ctx = els.qrCanvas.getContext('2d');
+      ctx.clearRect(0,0,els.qrCanvas.width,els.qrCanvas.height);
+      els.downloadQR.disabled = true;
+    }
 
-    // Try CORS first so canvas stays exportable; fallback without CORS (taints canvas)
     function loadCenterImage(callback){
       var tryCors = new Image();
       tryCors.crossOrigin = 'anonymous';
-      tryCors.onload = function(){ canvasTainted = false; centerImg = tryCors; callback(centerImg); };
+      tryCors.onload = function(){
+        canvasTainted = false;
+        centerImg = tryCors;
+        callback(centerImg);
+      };
       tryCors.onerror = function(){
         var fallback = new Image();
-        fallback.onload = function(){ canvasTainted = true; centerImg = fallback; callback(centerImg); };
+        fallback.onload = function(){
+          canvasTainted = true;
+          centerImg = fallback;
+          callback(centerImg);
+        };
         fallback.onerror = function(){ callback(null); };
-        fallback.src = OFFICIAL_IMG_URL; // no crossOrigin -> will taint, but will display
+        fallback.src = OFFICIAL_IMG_URL;
       };
       tryCors.src = OFFICIAL_IMG_URL;
     }
 
     function renderQRFast(url){
       if(!url){ clearQR(); return; }
-      var PREVIEW = 448; // fast paint
-      var FINAL   = 1024; // crisp download
+      var PREVIEW = 448;
+      var FINAL = 1024;
 
       var drawAt = function(SIZE, done){
         els.qrHidden.innerHTML = '';
-        new QRCode(els.qrHidden, { text:url, width:SIZE, height:SIZE, colorDark:'#000', colorLight:'#fff', correctLevel: QRCode.CorrectLevel.H });
+        new QRCode(els.qrHidden, {
+          text: url,
+          width: SIZE,
+          height: SIZE,
+          colorDark: '#000',
+          colorLight: '#fff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
 
         var paint = function(){
-          var src = els.qrHidden.querySelector('canvas'); if(!src){ if(done) done(); return; }
+          var src = els.qrHidden.querySelector('canvas');
+          if(!src){ if(done) done(); return; }
           var ctx = els.qrCanvas.getContext('2d');
-          els.qrCanvas.width = SIZE; els.qrCanvas.height = SIZE;
-          ctx.imageSmoothingEnabled = false; ctx.fillStyle = '#fff'; ctx.fillRect(0,0,SIZE,SIZE); ctx.drawImage(src,0,0,SIZE,SIZE);
-          var hole = Math.round(SIZE*0.24), x = Math.round((SIZE-hole)/2), y = x;
-          // Punch rounded hole so QR wraps image
-          ctx.save(); ctx.globalCompositeOperation='destination-out';
-          (function(){ var r=Math.round(hole*0.18), w=hole, h=hole; ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.fill(); })();
+          els.qrCanvas.width = SIZE;
+          els.qrCanvas.height = SIZE;
+          ctx.imageSmoothingEnabled = false;
+          ctx.fillStyle = '#fff';
+          ctx.fillRect(0,0,SIZE,SIZE);
+          ctx.drawImage(src,0,0,SIZE,SIZE);
+
+          var hole = Math.round(SIZE * 0.24);
+          var x = Math.round((SIZE - hole) / 2);
+          var y = x;
+
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-out';
+          (function(){
+            var r = Math.round(hole * 0.18);
+            var w = hole, h = hole;
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+            ctx.fill();
+          })();
           ctx.restore();
 
           var drawCenter = function(img){
             ctx.imageSmoothingEnabled = true;
-            var iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height; var scale=Math.min(hole/iw, hole/ih);
-            var dw=Math.round(iw*scale), dh=Math.round(ih*scale); var dx=x+Math.round((hole-dw)/2), dy=y+Math.round((hole-dh)/2);
-            // Key out near-white on a scaled buffer for speed
-            try{
-              var C = document.createElement('canvas'); C.width=dw; C.height=dh; var cctx=C.getContext('2d'); cctx.drawImage(img,0,0,dw,dh);
-              var data=cctx.getImageData(0,0,dw,dh), d=data.data;
-              for(var i=0;i<d.length;i+=4){ var r=d[i], g=d[i+1], b=d[i+2]; var avg=(r+g+b)/3, maxc=Math.max(r,g,b), minc=Math.min(r,g,b); if(avg>245 && (maxc-minc)<15){ d[i+3]=0; } }
-              cctx.putImageData(data,0,0); ctx.drawImage(C,dx,dy,dw,dh);
-            }catch(e){ ctx.drawImage(img,dx,dy,dw,dh); }
+            var iw = img.naturalWidth || img.width;
+            var ih = img.naturalHeight || img.height;
+            var scale = Math.min(hole / iw, hole / ih);
+            var dw = Math.round(iw * scale);
+            var dh = Math.round(ih * scale);
+            var dx = x + Math.round((hole - dw) / 2);
+            var dy = y + Math.round((hole - dh) / 2);
+
+            try {
+              var C = document.createElement('canvas');
+              C.width = dw;
+              C.height = dh;
+              var cctx = C.getContext('2d');
+              cctx.drawImage(img,0,0,dw,dh);
+              var data = cctx.getImageData(0,0,dw,dh);
+              var d = data.data;
+              for(var i=0;i<d.length;i+=4){
+                var r = d[i], g = d[i+1], b = d[i+2];
+                var avg = (r+g+b)/3;
+                var maxc = Math.max(r,g,b);
+                var minc = Math.min(r,g,b);
+                if(avg > 245 && (maxc-minc) < 15){ d[i+3] = 0; }
+              }
+              cctx.putImageData(data,0,0);
+              ctx.drawImage(C,dx,dy,dw,dh);
+            } catch(e){
+              ctx.drawImage(img,dx,dy,dw,dh);
+            }
             if(done) done();
           };
 
-          if(centerImg && centerImg.complete){ drawCenter(centerImg); }
-          else { loadCenterImage(function(im){ if(im){ drawCenter(im); } if(done) done(); }); }
+          if(centerImg && centerImg.complete){
+            drawCenter(centerImg);
+          } else {
+            loadCenterImage(function(im){ if(im){ drawCenter(im); } if(done) done(); });
+          }
         };
 
-        if('requestAnimationFrame' in window) requestAnimationFrame(paint); else setTimeout(paint,0);
+        if('requestAnimationFrame' in window) requestAnimationFrame(paint);
+        else setTimeout(paint,0);
       };
 
-      // Quick pass, then full-res upgrade without blocking UI
       drawAt(PREVIEW, function(){
         var upgrade = function(){ drawAt(FINAL, finalizeQR); };
-        if('requestIdleCallback' in window) requestIdleCallback(upgrade,{timeout:200}); else setTimeout(upgrade,0);
+        if('requestIdleCallback' in window) requestIdleCallback(upgrade,{timeout:200});
+        else setTimeout(upgrade,0);
       });
     }
 
     function finalizeQR(){
       if(canvasTainted){
         els.downloadQR.disabled = true;
-        els.qrStatus.textContent = 'Download unavailable: image host blocks it (CORS). You can still screenshot or swap to a CORS-enabled logo.';
+        els.qrStatus.textContent = 'Download unavailable due to image host settings. You can still screenshot this QR.';
         return;
       }
       try {
-        // Accessing toDataURL will throw only if tainted; otherwise ok
         void els.qrCanvas.toDataURL('image/png');
         els.downloadQR.disabled = false;
         els.qrStatus.textContent = 'Ready — click Download QR (PNG).';
       } catch(e){
         els.downloadQR.disabled = true;
-        els.qrStatus.textContent = 'Download unavailable: image host blocks it (CORS).';
+        els.qrStatus.textContent = 'Download unavailable due to browser security settings.';
       }
     }
 
     function downloadQR(){
       try {
-        var data=els.qrCanvas.toDataURL('image/png');
-        var a=document.createElement('a'); a.href=data; a.download='code-ninjas-qr.png';
-        document.body.appendChild(a); a.click(); a.remove();
-      } catch(e){ showToast('Download failed.'); }
+        var data = els.qrCanvas.toDataURL('image/png');
+        var a = document.createElement('a');
+        a.href = data;
+        a.download = 'code-ninjas-qr.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } catch(e){
+        showToast('Download failed.');
+      }
     }
 
-    // events
-    document.addEventListener('keydown', function(e){ if(e.key==='Enter'){ var tag=(document.activeElement||{}).tagName; if(tag==='TEXTAREA') return; if(e.shiftKey||e.ctrlKey||e.metaKey||e.altKey) return; e.preventDefault(); next(); }});
-    els.back.addEventListener('click', back); els.next.addEventListener('click', next);
-    els.copy.addEventListener('click', copyText); els.postFb.addEventListener('click', shareFacebook); els.shuffle.addEventListener('click', reroll);
-    els.location.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
-    els.child.addEventListener('input', function(){ if(state.step===state.total-1) generate(); });
-    els.gender.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
-    els.program.addEventListener('change', function(){ if(state.step===state.total-1) generate(); });
+    // Vibe buttons sync
+    function syncVibeButtons(){
+      var buttons = document.querySelectorAll('.chip-vibe');
+      Array.prototype.forEach.call(buttons, function(btn){
+        var v = btn.getAttribute('data-vibe');
+        var active = (v === state.vibe);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
+    function setVibe(v){
+      state.vibe = v || 'warm';
+      syncVibeButtons();
+      if(state.step === state.total - 1){
+        reroll();
+      }
+    }
+
+    // Events
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        var tag = (document.activeElement || {}).tagName;
+        if(tag === 'TEXTAREA') return;
+        if(e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
+        e.preventDefault();
+        next();
+      }
+    });
+
+    els.back.addEventListener('click', back);
+    els.next.addEventListener('click', next);
+    els.copy.addEventListener('click', copyText);
+    els.copyLinkOnly.addEventListener('click', copyLinkOnly);
+    els.postFb.addEventListener('click', shareFacebook);
+    els.shuffle.addEventListener('click', reroll);
     els.downloadQR.addEventListener('click', downloadQR);
 
+    els.location.addEventListener('change', function(){ if(state.step === state.total - 1) generate(); });
+    els.child.addEventListener('input', function(){ if(state.step === state.total - 1) generate(); });
+    els.gender.addEventListener('change', function(){ if(state.step === state.total - 1) generate(); });
+    els.program.addEventListener('change', function(){ if(state.step === state.total - 1) generate(); });
+
+    // Delegate vibe + social buttons
+    document.addEventListener('click', function(e){
+      var vibeBtn = e.target.closest('.chip-vibe');
+      if(vibeBtn){
+        var v = vibeBtn.getAttribute('data-vibe');
+        setVibe(v);
+        return;
+      }
+      var socialBtn = e.target.closest('.social-btn');
+      if(socialBtn){
+        var net = socialBtn.getAttribute('data-network');
+        handleSocialClick(net);
+      }
+    });
+
     function init(){
-      renderLikeChips(); setStep(0);
-      // Preload (CORS-first) to keep canvas exportable when possible
-      loadCenterImage(function(){ /* cached */ });
+      renderLikeChips();
+      setStep(0);
+      syncVibeButtons();
+      loadCenterImage(function(){}); // preload
     }
+
     init();
   })();
   </script>
